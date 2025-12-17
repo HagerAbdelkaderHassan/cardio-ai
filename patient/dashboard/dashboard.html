@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Manrope:wght@400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <title>Patient Dashboard</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="patient-dashboard__header">
+        <div class="header-content">
+            
+            <div class="header-title">
+                <span class="cardio">Cardio</span>
+                <span class="ai">AI</span>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search medical records, appointments..." class="search-input" />
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            
+            <div class="header-actions">
+                <button class="icon-btn" id="notificationsBtn">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <button class="icon-btn" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </button>
+                <div class="user-avatar" id="profileAvatar">
+                    <!-- سيتم تحميل الصورة من JavaScript -->
+                    <i class="fas fa-user default-avatar"></i>
+                    <input type="file" id="avatarUpload" accept="image/*" style="display: none;">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-title">Overview</div>
+                    <ul class="nav-menu">
+                        <li class="nav-item active" id="homeNav" data-page="dashboard.html">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </li>
+                        <li class="nav-item" id="profileNav" data-page="/patient/profile/profile.html">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </li>
+                        <li class="nav-item" id="medicalRecordsNav" data-page="/patient\Medical Records\medicalrecords1.html">
+                            <i class="fas fa-file-medical"></i>
+                            <span>Medical Records</span>
+                        </li>
+                        <li class="nav-item" id="appointmentsNav" data-page="/patient\appointments\appiontment.html">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Appointments</span>
+                        </li>
+                        <li class="nav-item" id="medicationsNav" data-page="/patient\medications\medications.html">
+                            <i class="fas fa-pills"></i>
+                            <span>Medications</span>
+                        </li>
+                        <li class="nav-item" id="notificationsNav" data-page="/patient\notifications\notification.html">
+                            <i class="fas fa-bell"></i>
+                            <span>Notifications</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-card">
+                    <div class="user-info">
+                        <div class="avatar-large" id="largeAvatarContainer">
+                            <!-- سيتم تحميل الصورة من JavaScript -->
+                            <i class="fas fa-user default-avatar-large"></i>
+                        </div>
+                        <div class="user-details">
+                            <h2><b>Hello, Hager Abdelkader!</b></h2>
+                            <p class="user-age">19 years old</p>
+                        </div>
+                    </div>
+                    <button class="notifications-btn" id="quickNotifications">
+                        <i class="fas fa-bell"></i>
+                        <span>3 New Notifications</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Quick Stats -->
+            <section class="quick-stats-section">
+                <h2>Quick Stats</h2>
+                <div class="stats-grid">
+                    <!-- Blood Pressure Card -->
+                    <div class="stat-card" id="bloodPressureCard" data-page="blood-pressure-details.html">
+                        <div class="stat-header">
+                            <h3>Blood Pressure</h3>
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <div class="stat-value">
+                            <span class="value">120/80</span>
+                            <span class="unit">mmHg</span>
+                        </div>
+                        <div class="stat-trend">
+                            <i class="fas fa-minus"></i>
+                            <span class="status normal">Normal</span>
+                        </div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 50%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Heart Rate Card -->
+                    <div class="stat-card" id="heartRateCard" data-page="heart-rate-details.html">
+                        <div class="stat-header">
+                            <h3>Heart Rate</h3>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-value">
+                            <span class="value">72</span>
+                            <span class="unit">bpm</span>
+                        </div>
+                        <div class="stat-trend">
+                            <i class="fas fa-arrow-down"></i>
+                            <span class="status decreased">Slightly decreased</span>
+                        </div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 72%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blood Sugar Card -->
+                    <div class="stat-card" id="bloodSugarCard" data-page="blood-sugar-details.html">
+                        <div class="stat-header">
+                            <h3>Blood Sugar</h3>
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="stat-value">
+                            <span class="value">95</span>
+                            <span class="unit">mg/dL</span>
+                        </div>
+                        <div class="stat-trend">
+                            <i class="fas fa-arrow-up"></i>
+                            <span class="status optimal">Optimal range</span>
+                        </div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weight Card -->
+                    <div class="stat-card" id="weightCard" data-page="weight-details.html">
+                        <div class="stat-header">
+                            <h3>Weight</h3>
+                            <i class="fas fa-weight"></i>
+                        </div>
+                        <div class="stat-value">
+                            <span class="value">155</span>
+                            <span class="unit">lbs</span>
+                        </div>
+                        <div class="stat-trend">
+                            <i class="fas fa-minus"></i>
+                            <span class="status consistent">Consistent</span>
+                        </div>
+                        <div class="stat-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat Bot Icon - صورة بدل الأيقونة -->
+            <div class="chat-bot-icon" id="chatBotBtn">
+                <!-- يمكنك استبدال chatbot.png بالصورة الخاصة بك -->
+                <img src="chatbot.png" alt="Chat Bot" id="chatBotImage">
+            </div>
+        </main>
+    </div>
+
+    <!-- Quick Links Footer -->
+    <footer class="quick-links-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-heartbeat"></i>
+                <div class="footer-title">
+                    <span class="cardio">Cardio</span>
+                    <span class="ai">AI</span>
+                </div>
+            </div>
+            
+            <div class="quick-links-container">
+                <span class="quick-links-label">Quick Links:</span>
+                <div class="links">
+                    <a href="/startpage/home.html" class="footer-link">Home</a>
+                    <span class="separator">|</span>
+                    <a href="/startpage/home.html" class="footer-link">Features</a>
+                    <span class="separator">|</span>
+                    <a href="/startpage/home.html" class="footer-link">About</a>
+                    <span class="separator">|</span>
+                    <a href="/chatbot/mainpage.html" class="footer-link">Chatbot</a>
+                </div>
+            </div>
+            
+            <button class="logout-btn" id="footerLogoutBtn">
+                <i class="fas fa-sign-out-alt"></i> Log out
+            </button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

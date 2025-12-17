@@ -1,0 +1,1781 @@
+.doctor-dashboard,
+.doctor-dashboard * {
+  box-sizing: border-box;
+}
+.doctor-dashboard {
+  background: #ffffff;
+  height: 1457px;
+  position: relative;
+  box-shadow: 0px 3px 6px 0px rgba(18, 15, 40, 0.12);
+  transform-origin: 0 0;
+  transform: rotate(0.051deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__container {
+  background: rgba(178, 215, 66, 0.56);
+  width: 271px;
+  height: 1390.84px;
+  position: absolute;
+  left: 0px;
+  top: 69.42px;
+}
+.doctor-dashboard__line {
+  width: 0px;
+  height: 900px;
+  position: absolute;
+  left: 271px;
+  top: 0px;
+  overflow: visible;
+}
+.doctor-dashboard__image {
+  width: 0.31px;
+  height: 32px;
+  position: absolute;
+  left: 24px;
+  top: 28px;
+  overflow: hidden;
+}
+.doctor-dashboard__group {
+  height: auto;
+  position: absolute;
+  left: -10.88px;
+  top: 2.67px;
+  overflow: visible;
+}
+.doctor-dashboard__button {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  width: 238px;
+  height: 40px;
+  position: absolute;
+  left: 4.41px;
+  top: 109.54px;
+  overflow: hidden;
+}
+.doctor-dashboard__patient-search {
+  color: #374151;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 63px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__search {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: calc(50% - 103px);
+  top: 50%;
+  translate: 0 -50%;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group2 {
+  height: auto;
+  position: absolute;
+  left: 1.7px;
+  top: 1.7px;
+  overflow: visible;
+}
+.doctor-dashboard__button2 {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  width: 238px;
+  height: 40px;
+  position: absolute;
+  left: 4.82px;
+  top: 157.54px;
+  overflow: hidden;
+}
+.doctor-dashboard__my-patients {
+  color: #374151;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 63px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__users {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: calc(50% - 103px);
+  top: 50%;
+  translate: 0 -50%;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group3 {
+  height: auto;
+  position: absolute;
+  left: 0.86px;
+  top: 1.68px;
+  overflow: visible;
+}
+.doctor-dashboard__button3 {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  width: 238px;
+  height: 40px;
+  position: absolute;
+  left: 5.31px;
+  top: 214.54px;
+  overflow: hidden;
+}
+.doctor-dashboard__requests {
+  color: #374151;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 63px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__file-text {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: calc(50% - 103px);
+  top: 50%;
+  translate: 0 -50%;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group4 {
+  height: auto;
+  position: absolute;
+  left: 2.53px;
+  top: 0.85px;
+  overflow: visible;
+}
+.doctor-dashboard__button4 {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  width: 238px;
+  height: 40px;
+  position: absolute;
+  left: 5.72px;
+  top: 262.54px;
+  overflow: hidden;
+}
+.doctor-dashboard__schedule {
+  color: #374151;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 63px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__calendar {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: calc(50% - 103px);
+  top: 50%;
+  translate: 0 -50%;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group5 {
+  height: auto;
+  position: absolute;
+  left: 1.7px;
+  top: 0.84px;
+  overflow: visible;
+}
+.doctor-dashboard__house {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: calc(50% - 114.56px);
+  top: calc(50% - 621.02px);
+  overflow: hidden;
+}
+.doctor-dashboard__button5 {
+  background: rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  width: 238px;
+  height: 40px;
+  position: absolute;
+  left: 3.89px;
+  top: 48.55px;
+  overflow: hidden;
+}
+.doctor-dashboard__patient-search2 {
+  color: #003785;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 63px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__home-3 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 20.77px;
+  top: 12.82px;
+  transform-origin: 0 0;
+  transform: rotate(-0.49deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group6 {
+  height: auto;
+  position: absolute;
+  left: 1.73px;
+  top: 2.3px;
+  overflow: visible;
+}
+.doctor-dashboard__bookings-and-payments {
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 18px;
+  line-height: 40px;
+  font-weight: 700;
+  position: absolute;
+  left: 87.5px;
+  top: 1267.56px;
+  width: 187px;
+  height: 43px;
+  transform-origin: 0 0;
+  transform: rotate(0.238deg) scale(1, 1);
+}
+.bookings-and-payments-span {
+  color: #003785;
+}
+.bookings-and-payments-span2 {
+  color: #87af12;
+}
+.doctor-dashboard__container-280 {
+  background: #ffffff;
+  border-radius: 26px;
+  border-style: dashed;
+  border-color: #ffffff;
+  border-width: 1px;
+  width: 53.93px;
+  height: 50.04px;
+  position: absolute;
+  left: 33.39px;
+  top: 1250.93px;
+  transform-origin: 0 0;
+  transform: rotate(0.156deg) scale(1, 1);
+}
+.doctor-dashboard__image-33 {
+  width: 52px;
+  height: 52px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.doctor-dashboard__group7 {
+  height: auto;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: visible;
+}
+.doctor-dashboard__button6 {
+  background: #0a66f0;
+  border-radius: 28px;
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  left: 1352px;
+  top: 812px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__text {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - -12px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__bot {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group8 {
+  height: auto;
+  position: absolute;
+  left: 1px;
+  top: 3px;
+  overflow: visible;
+}
+.doctor-dashboard__container2 {
+  background: #ffffff;
+  width: 1169px;
+  height: 835px;
+  position: absolute;
+  left: 271px;
+  top: 65px;
+}
+.doctor-dashboard__good-morning-dr-nada {
+  color: #003785;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 700;
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__you-have-8-appointments-today {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  position: absolute;
+  left: 32px;
+  top: 70px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__button7 {
+  background: #ffffff;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 441px;
+  height: 40px;
+  position: absolute;
+  left: 494px;
+  top: 32px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__find-patient {
+  color: #171a1f;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 183.5px);
+  top: 50%;
+  translate: 0 -50%;
+  width: 249px;
+}
+.doctor-dashboard__search2 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: calc(50% - 208.55px);
+  top: 50%;
+  translate: 0 -50%;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group9 {
+  height: auto;
+  position: absolute;
+  left: 1.3px;
+  top: 1.3px;
+  overflow: visible;
+}
+.doctor-dashboard__button8 {
+  background: #003785;
+  border-radius: 6px;
+  width: 189.78px;
+  height: 40px;
+  position: absolute;
+  left: 947px;
+  top: 32px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__new-appointment {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: calc(50% - 44.5px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__plus {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: calc(50% - 76.5px);
+  top: 50%;
+  translate: 0 -50%;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group10 {
+  height: auto;
+  position: absolute;
+  left: 2.64px;
+  top: 2.64px;
+  overflow: visible;
+}
+.doctor-dashboard__container3 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 259px;
+  height: 168px;
+  position: absolute;
+  left: 32px;
+  top: 116px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+}
+.doctor-dashboard__today-s-appointments {
+  color: #4b5563;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 24px;
+  top: 28px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__calendar-days {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 210px;
+  top: 24px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group11 {
+  height: auto;
+  position: absolute;
+  left: 2px;
+  top: 1px;
+  overflow: visible;
+}
+.doctor-dashboard___8 {
+  color: #111827;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  position: absolute;
+  left: 24px;
+  top: 63px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard___3-completed-5-remaining {
+  color: #16a34a;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 24px;
+  top: 106px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container4 {
+  background: rgba(0, 55, 133, 0);
+  border-radius: 10px;
+  width: 259px;
+  height: 168px;
+  position: absolute;
+  left: 314px;
+  top: 116px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+}
+.doctor-dashboard__pending-requests {
+  color: #4b5563;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 24px;
+  top: 28px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__file-stack {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 210px;
+  top: 24px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group12 {
+  height: auto;
+  position: absolute;
+  left: 2px;
+  top: 1px;
+  overflow: visible;
+}
+.doctor-dashboard___12 {
+  color: #111827;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  position: absolute;
+  left: 24px;
+  top: 63px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard___3-urgent-9-routine {
+  color: #dc2626;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 24px;
+  top: 106px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container5 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 259px;
+  height: 168px;
+  position: absolute;
+  left: 596px;
+  top: 116px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+}
+.doctor-dashboard__total-patients {
+  color: #4b5563;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 24px;
+  top: 28px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__users-round {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 210px;
+  top: 24px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group13 {
+  height: auto;
+  position: absolute;
+  left: 1px;
+  top: 2px;
+  overflow: visible;
+}
+.doctor-dashboard___247 {
+  color: #111827;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  position: absolute;
+  left: 24px;
+  top: 63px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__active-patient-roster {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 24px;
+  top: 106px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container6 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 259px;
+  height: 168px;
+  position: absolute;
+  left: 878px;
+  top: 116px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+}
+.doctor-dashboard__efficiency {
+  color: #4b5563;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 24px;
+  top: 28px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__trending-up {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 210px;
+  top: 24px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group14 {
+  height: auto;
+  position: absolute;
+  left: 1px;
+  top: 6px;
+  overflow: visible;
+}
+.doctor-dashboard___94 {
+  color: #779f00;
+  text-align: left;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  position: absolute;
+  left: 24px;
+  top: 63px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__on-time-appointments-this-week {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 24px;
+  top: 106px;
+  width: 211px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container7 {
+  background: #f3f4f6;
+  border-radius: 8px;
+  width: 107px;
+  height: 16px;
+  position: absolute;
+  left: 131px;
+  top: 72px;
+  overflow: hidden;
+}
+.doctor-dashboard__rectangle {
+  background: #779f00;
+  width: 107px;
+  height: 16px;
+  position: absolute;
+  left: -24px;
+  top: 0px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container8 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 537px;
+  height: 432px;
+  position: absolute;
+  left: 32px;
+  top: 329px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+}
+.doctor-dashboard__today-s-schedule {
+  color: #003785;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.45px;
+  font-weight: 500;
+  position: absolute;
+  left: 24px;
+  top: 27px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__your-appointments-for-today {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 24px;
+  top: 54px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__button9 {
+  background: #ffffff;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 89.03px;
+  height: 40px;
+  position: absolute;
+  left: 423px;
+  top: 31px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__view-all {
+  color: #171a1f;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+}
+.doctor-dashboard__container9 {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 489px;
+  height: 94px;
+  position: absolute;
+  left: 23px;
+  top: 196px;
+}
+.doctor-dashboard__sarah-johnson {
+  color: #1f2937;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 75px;
+  top: 11px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__general-checkup {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 75px;
+  top: 39px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__clock {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: 74px;
+  top: 67px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group15 {
+  height: auto;
+  position: absolute;
+  left: 0.5px;
+  top: 0.5px;
+  overflow: visible;
+}
+.doctor-dashboard___10-30-am {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 92px;
+  top: 63px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__button10 {
+  background: #779f00;
+  border-radius: 4px;
+  width: 88px;
+  height: 20px;
+  position: absolute;
+  left: 365px;
+  top: 35px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__new-patient {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+}
+.doctor-dashboard__c-check-1 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 457px;
+  top: 37px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group16 {
+  height: auto;
+  position: absolute;
+  left: 1.73px;
+  top: 1.73px;
+  overflow: visible;
+}
+.doctor-dashboard__avatar {
+  background: #e8f0f8;
+  border-radius: 24px;
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  left: 13px;
+  top: 21px;
+  overflow: hidden;
+}
+.doctor-dashboard__rectangle2 {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  border-width: 1px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  bottom: 0%;
+  top: 0%;
+  object-fit: cover;
+}
+.doctor-dashboard__container10 {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 489px;
+  height: 94px;
+  position: absolute;
+  left: 23px;
+  top: 303px;
+}
+.doctor-dashboard__diabetes-management {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 75px;
+  top: 39px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__group17 {
+  height: auto;
+  position: absolute;
+  left: 0.5px;
+  top: 0.5px;
+  overflow: visible;
+}
+.doctor-dashboard___11-00-am {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 92px;
+  top: 63px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__button11 {
+  background: #1c8a8e;
+  border-radius: 4px;
+  width: 97px;
+  height: 20px;
+  position: absolute;
+  left: 356px;
+  top: 36px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__consultation {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+}
+.doctor-dashboard__group18 {
+  height: auto;
+  position: absolute;
+  left: 1.73px;
+  top: 1.73px;
+  overflow: visible;
+}
+.doctor-dashboard__container11 {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 489px;
+  height: 94px;
+  position: absolute;
+  left: 24px;
+  top: 89px;
+}
+.doctor-dashboard__hypertension {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 75px;
+  top: 39px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__group19 {
+  height: auto;
+  position: absolute;
+  left: 0.5px;
+  top: 0.5px;
+  overflow: visible;
+}
+.doctor-dashboard___09-00-am {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 92px;
+  top: 63px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__button12 {
+  background: #779f00;
+  border-radius: 4px;
+  width: 82px;
+  height: 20px;
+  position: absolute;
+  left: 369px;
+  top: 36px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__follow-up {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+}
+.doctor-dashboard__c-check-12 {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 456px;
+  top: 39px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group20 {
+  height: auto;
+  position: absolute;
+  left: 1.73px;
+  top: 1.73px;
+  overflow: visible;
+}
+.doctor-dashboard__container12 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 537px;
+  height: 218px;
+  position: absolute;
+  left: 600px;
+  top: 316px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+}
+.doctor-dashboard__pending-requests2 {
+  color: #003785;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.45px;
+  font-weight: 500;
+  position: absolute;
+  left: 24px;
+  top: 27px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__items-requiring-your-attention {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 24px;
+  top: 54px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container13 {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 489px;
+  height: 98px;
+  position: absolute;
+  left: 24px;
+  top: 96px;
+}
+.doctor-dashboard__lisa-anderson {
+  color: #1f2937;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 17px;
+  top: 19px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__tag {
+  background: rgba(0, 0, 0, 0);
+  width: 52px;
+  height: 22px;
+  position: absolute;
+  left: 152px;
+  top: 18px;
+}
+.doctor-dashboard__frame {
+  background: #d53447;
+  border-radius: 11px;
+  width: 52px;
+  height: 22px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.doctor-dashboard__high {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+}
+.doctor-dashboard__blood-work-results-require-review {
+  color: #4b5563;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 17px;
+  top: 43px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard___2-hours-ago {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 17px;
+  top: 66px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__arrow-right {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 451px;
+  top: 39px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group21 {
+  height: auto;
+  position: absolute;
+  left: 3.36px;
+  top: 3.36px;
+  overflow: visible;
+}
+.doctor-dashboard__button13 {
+  background: #ffffff;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 89.03px;
+  height: 40px;
+  position: absolute;
+  left: 773.36px;
+  top: 559.3px;
+  overflow: hidden;
+}
+.doctor-dashboard__container14 {
+  background: #ffffff;
+  border-radius: 10px;
+  width: 1101px;
+  height: 245px;
+  position: absolute;
+  left: 299.57px;
+  top: 1027.5px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+}
+.doctor-dashboard__quick-actions {
+  color: #1f2937;
+  text-align: left;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.4px;
+  font-weight: 600;
+  position: absolute;
+  left: 24px;
+  top: 26px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__common-tasks-and-shortcuts {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 24px;
+  top: 55px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container15 {
+  background: #f0f7ff;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #bfdbfe;
+  border-width: 1px;
+  width: 247px;
+  height: 113px;
+  position: absolute;
+  left: 24px;
+  top: 98px;
+}
+.doctor-dashboard__file-text2 {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 104px;
+  top: 25px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group22 {
+  height: auto;
+  position: absolute;
+  left: 3.47px;
+  top: 1.13px;
+  overflow: visible;
+}
+.doctor-dashboard__patient-requests {
+  color: #1e40af;
+  text-align: center;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 65px;
+  top: 64px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container16 {
+  background: #f9fafb;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #e5e7eb;
+  border-width: 1px;
+  width: 247px;
+  height: 113px;
+  position: absolute;
+  left: 304.11px;
+  top: 97.36px;
+}
+.doctor-dashboard__search3 {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 104px;
+  top: 25px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group23 {
+  height: auto;
+  position: absolute;
+  left: 2.3px;
+  top: 2.3px;
+  overflow: visible;
+}
+.doctor-dashboard__search-patients {
+  color: #1f2937;
+  text-align: center;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 69px;
+  top: 64px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container17 {
+  background: #f9fafb;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #e5e7eb;
+  border-width: 1px;
+  width: 247px;
+  height: 113px;
+  position: absolute;
+  left: 584.09px;
+  top: 94.41px;
+}
+.doctor-dashboard__calendar-days2 {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 119px;
+  top: 25px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__group24 {
+  height: auto;
+  position: absolute;
+  left: 2.3px;
+  top: 1.16px;
+  overflow: visible;
+}
+.doctor-dashboard__manage-schedule {
+  color: #1f2937;
+  text-align: center;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 77px;
+  top: 64px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container18 {
+  background: #f2f6fd;
+  border-radius: 10px;
+  width: 336.17px;
+  height: 843.14px;
+  position: absolute;
+  left: 1440.97px;
+  top: 174.53px;
+  box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
+    0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__container19 {
+  background: rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #de3b40;
+  border-width: 1px;
+  width: 308.22px;
+  height: 168.93px;
+  position: absolute;
+  left: 11.91px;
+  top: 106.92px;
+}
+.doctor-dashboard__sarah-johnson2 {
+  color: #1f2937;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 56.05px;
+  top: 7.61px;
+}
+.doctor-dashboard__avatar2 {
+  background: #e8f0f8;
+  border-radius: 24px;
+  width: 33.76px;
+  height: 34.23px;
+  position: absolute;
+  left: 12.1px;
+  top: 4.92px;
+  overflow: hidden;
+}
+.doctor-dashboard__rectangle3 {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  border-width: 1px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: -1.72%;
+  left: 1.72%;
+  bottom: 0.2%;
+  top: -0.2%;
+  object-fit: cover;
+}
+.doctor-dashboard__your-appointments-for-today2 {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 8.97px;
+  top: 143.94px;
+}
+.doctor-dashboard__sarah-johnson3 {
+  color: #de3b40;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  position: absolute;
+  left: 263.04px;
+  top: 6.17px;
+}
+.doctor-dashboard__your-appointments-for-today3 {
+  color: #6b7280;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 47.69px;
+  top: 44.67px;
+  width: 188.72px;
+}
+.doctor-dashboard__button14 {
+  background: #ffffff;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 63.05px;
+  height: 16.01px;
+  position: absolute;
+  left: 236.81px;
+  top: 146.35px;
+  transform-origin: 0 0;
+  transform: rotate(-0.382deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__review {
+  color: #171a1f;
+  text-align: center;
+  font-family: "Poppins-Light", sans-serif;
+  font-size: 6px;
+  line-height: 22px;
+  font-weight: 300;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+}
+.doctor-dashboard__button15 {
+  background: #ffffff;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 63.05px;
+  height: 16.01px;
+  position: absolute;
+  left: 236.72px;
+  top: 127.36px;
+  transform-origin: 0 0;
+  transform: rotate(-0.382deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__button16 {
+  background: #ffffff;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: #dee1e6;
+  border-width: 1px;
+  width: 75.09px;
+  height: 30.9px;
+  position: absolute;
+  left: 247.44px;
+  top: 32.28px;
+  overflow: hidden;
+}
+.doctor-dashboard__whats-app-image-2025-11-18-at-23-07-13-b-7-c-86-a-7-c-2 {
+  width: 46px;
+  height: 46px;
+  position: absolute;
+  left: 189.78px;
+  top: 9.24px;
+  transform-origin: 0 0;
+  transform: rotate(-0.399deg) scale(1, 1);
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.doctor-dashboard__bookings-and-payments2 {
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  position: absolute;
+  left: 12.82px;
+  top: 15.47px;
+  width: 211px;
+  height: 37px;
+  transform-origin: 0 0;
+  transform: rotate(-0.399deg) scale(1, 1);
+}
+.bookings-and-payments-2-span {
+  color: #003785;
+}
+.bookings-and-payments-2-span2 {
+  color: #87af12;
+}
+.doctor-dashboard__frame-15 {
+  background: rgba(135, 175, 18, 0.12);
+  width: 1554.99px;
+  height: 86.13px;
+  position: absolute;
+  left: 271.71px;
+  top: 1369.59px;
+  transform-origin: 0 0;
+  transform: rotate(-0.119deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__quick-links {
+  color: #000000;
+  text-align: left;
+  font-family: "Poppins-Medium", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  position: absolute;
+  left: 172.5px;
+  top: 27.67px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__header-menu {
+  background: rgba(0, 0, 0, 0);
+  width: 296px;
+  height: 22px;
+  position: absolute;
+  left: 305.53px;
+  top: 26.87px;
+  transform-origin: 0 0;
+  transform: rotate(0deg) scale(1, 1);
+}
+.doctor-dashboard__frame2 {
+  background: rgba(0, 0, 0, 0);
+  width: 42px;
+  height: 22px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.doctor-dashboard__home {
+  color: #171a1f;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: 50%;
+  translate: -50% -50%;
+  top: 50%;
+}
+.doctor-dashboard__frame3 {
+  background: rgba(0, 0, 0, 0);
+  width: 85px;
+  height: 22px;
+  position: absolute;
+  left: 42px;
+  top: 0px;
+  overflow: hidden;
+}
+.doctor-dashboard__features {
+  color: #171a1f;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: calc(50% - 18.5px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__frame4 {
+  background: rgba(0, 0, 0, 0);
+  width: 88px;
+  height: 22px;
+  position: absolute;
+  left: 127px;
+  top: 0px;
+  overflow: hidden;
+}
+.doctor-dashboard__solutions {
+  color: #171a1f;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: calc(50% - 20px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__frame5 {
+  background: rgba(0, 0, 0, 0);
+  width: 81px;
+  height: 22px;
+  position: absolute;
+  left: 193px;
+  top: 0px;
+  overflow: hidden;
+}
+.doctor-dashboard__contact {
+  color: #171a1f;
+  text-align: left;
+  font-family: "Poppins-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: calc(50% - 16.5px);
+  top: 50%;
+  translate: 0 -50%;
+}
+.doctor-dashboard__whats-app-image-2025-11-19-at-00-21-50-30-e-751-e-6-2 {
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  left: 14.09px;
+  top: 18.81px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transform-origin: 0 0;
+  transform: rotate(-0.775deg) scale(1, 1);
+  object-fit: cover;
+  aspect-ratio: 1;
+}
+.doctor-dashboard__cardio-ai {
+  text-align: left;
+  font-family: "Poppins-Bold", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  position: absolute;
+  left: 37.1px;
+  top: 19.5px;
+  transform-origin: 0 0;
+  transform: rotate(-0.775deg) scale(1, 1);
+}
+.cardio-ai-span {
+  color: #003785;
+}
+.cardio-ai-span2 {
+  color: #87af12;
+}
+.doctor-dashboard__button-109 {
+  background: #de3b40;
+  border-radius: 6px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0);
+  border-width: 1px;
+  width: 76px;
+  height: 36px;
+  position: absolute;
+  left: 1430.03px;
+  top: 23.91px;
+  transform-origin: 0 0;
+  transform: rotate(0.14deg) scale(1, 1);
+  overflow: hidden;
+}
+.doctor-dashboard__log-out {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  position: absolute;
+  left: calc(50% - 26px);
+  top: 50%;
+  translate: 0 -50%;
+}

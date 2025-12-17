@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - CardioAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">
+                
+                <div class="logo-text">
+                    <span class="logo-part1">Cardio</span>
+                    <span class="logo-part2">AI</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-center">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search medical records, appointments...">
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <a href="/patient/notifications/notification.html" class="header-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </a>
+            <a href="/patient/profile/profile.html" class="header-icon">
+                <i class="fas fa-cog"></i>
+            </a>
+           
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="/patient/dashboard/dashboard.html" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>dashboard</span>
+                </a>
+                <a href="/patient/profile/profile.html" class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <a href="/patient/Medical Records/medicalrecords1.html" class="nav-item">
+                    <i class="fas fa-file-medical"></i>
+                    <span>Medical Records</span>
+                </a>
+                <a href="/patient/appointments/appiontment.html" class="nav-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Appointments</span>
+                </a>
+                <a href="/patient/medications/medications.html" class="nav-item">
+                    <i class="fas fa-pills"></i>
+                    <span>Medications</span>
+                </a>
+                <a href="/patient/notifications/notification.html" class="nav-item active">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </nav>
+            
+            
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <h1 class="page-title">Notifications</h1>
+                <button class="mark-all-btn">
+                    <i class="fas fa-envelope-open"></i>
+                    <span>Mark All Read</span>
+                </button>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active">All Notifications</button>
+                <button class="filter-tab">Appointments</button>
+                <button class="filter-tab">Lab Results</button>
+                <button class="filter-tab">Medications</button>
+                <button class="filter-tab">System Updates</button>
+            </div>
+            
+            <!-- Notifications Grid -->
+            <div class="notifications-grid">
+                <!-- Notification Card 1 -->
+                <div class="notification-card">
+                    <div class="notification-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3 class="notification-title">Upcoming Appointment Reminder</h3>
+                            <span class="notification-tag reminder">Reminder</span>
+                        </div>
+                        <p class="notification-desc">
+                            Your appointment with Dr. Emily White for General Check-up is scheduled for Tomorrow, August 15, 2024, at 10:00 AM at St. Jude Clinic. Please arrive 15 minutes early.
+                        </p>
+                        <div class="notification-footer">
+                            <span class="notification-time">2 hours ago</span>
+                            <button class="notification-action-btn">View Appointment</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Card 2 -->
+                <div class="notification-card">
+                    <div class="notification-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3 class="notification-title">New Lab Results Available</h3>
+                            <span class="notification-tag new">New</span>
+                        </div>
+                        <p class="notification-desc">
+                            Your recent blood test results are now available for review. Please check your medical records for detailed information.
+                        </p>
+                        <div class="notification-footer">
+                            <span class="notification-time">Yesterday</span>
+                            <button class="notification-action-btn">View Results</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Card 3 -->
+                <div class="notification-card">
+                    <div class="notification-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3 class="notification-title">Medication Refill Alert</h3>
+                            <span class="notification-tag reminder">Reminder</span>
+                        </div>
+                        <p class="notification-desc">
+                            It's time to refill your prescription for Metformin. Please contact your pharmacy or doctor if you need a new prescription.
+                        </p>
+                        <div class="notification-footer">
+                            <span class="notification-time">July 28, 2024</span>
+                            <button class="notification-action-btn">Refill Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Card 4 -->
+                <div class="notification-card">
+                    <div class="notification-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3 class="notification-title">Patient Portal Update</h3>
+                            <span class="notification-tag info">Info</span>
+                        </div>
+                        <p class="notification-desc">
+                            Exciting new features have been added to your Patient Portal! Explore the improved interface and enhanced security settings.
+                        </p>
+                        <div class="notification-footer">
+                            <span class="notification-time">July 25, 2024</span>
+                            <button class="notification-action-btn">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Card 5 -->
+                <div class="notification-card">
+                    <div class="notification-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3 class="notification-title">Appointment Confirmation</h3>
+                            <span class="notification-tag new">New</span>
+                        </div>
+                        <p class="notification-desc">
+                            Your appointment with Dr. Michael Lee for Cardiology Consultation has been successfully booked for August 20, 2024, at 02:30 PM.
+                        </p>
+                        <div class="notification-footer">
+                            <span class="notification-time">July 20, 2024</span>
+                            <button class="notification-action-btn">View Appointment</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Card 6 -->
+                <div class="notification-card">
+                    <div class="notification-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3 class="notification-title">Urgent: Abnormal Lab Result</h3>
+                            <span class="notification-tag urgent">Urgent</span>
+                        </div>
+                        <p class="notification-desc">
+                            An abnormal result was detected in your recent urine analysis. Please contact your doctor immediately to discuss the next steps.
+                        </p>
+                        <div class="notification-footer">
+                            <span class="notification-time">July 18, 2024</span>
+                            <button class="notification-action-btn">Call Doctor</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Card 7 -->
+                <div class="notification-card">
+                    <div class="notification-icon">
+                        <i class="fas fa-pills"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3 class="notification-title">New Prescription Added</h3>
+                            <span class="notification-tag new">New</span>
+                        </div>
+                        <p class="notification-desc">
+                            A new prescription for Amoxicillin has been added to your medication list by Dr. Sarah Chen.
+                        </p>
+                        <div class="notification-footer">
+                            <span class="notification-time">July 15, 2024</span>
+                            <button class="notification-action-btn">View Medications</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notification Card 8 -->
+                <div class="notification-card">
+                    <div class="notification-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="notification-content">
+                        <div class="notification-header">
+                            <h3 class="notification-title">Scheduled System Downtime</h3>
+                            <span class="notification-tag info">Info</span>
+                        </div>
+                        <p class="notification-desc">
+                            The portal will be undergoing maintenance on August 10, 2024, from 1:00 AM to 3:00 AM UTC. Services may be temporarily unavailable.
+                        </p>
+                        <div class="notification-footer">
+                            <span class="notification-time">July 10, 2024</span>
+                            <button class="notification-action-btn">Read FAQ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+               
+                <div class="footer-logo-text">
+                    <span class="footer-logo-part1">Cardio</span>
+                    <span class="footer-logo-part2">AI</span>
+                </div>
+            </div>
+            
+            <div class="footer-quick-links">
+                <span class="footer-section-title">Quick Links</span>
+                <div class="footer-links">
+                    <a href="/startpage/home.html">Home</a>
+                    <a href="/startpage/home.html">Features</a>
+                    <a href="/startpage/home.html">About</a>
+                    <a href="/chatbot/mainpage.html">Chatbot</a>
+                </div>
+            </div>
+            
+            <a href="/registeration/doctor/patient/logout.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Log out</span>
+            </a>
+        </div>
+    </footer>
+
+     <!-- Floating Chatbot Icon -->
+        <div class="floating-chatbot">
+            <a href="/chatbot/mainpage.html" class="chatbot-link">
+                <img src="chatbot.png" alt="AI Chatbot" class="chatbot-logo">
+            </a>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
