@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Modal Elements
     const addItemModal = document.getElementById('addItemModal');
-    const modalTitle = document.getElementById('modalTitle');
+    const modalTitle = document.getElementBشyId('modalTitle');
     const itemName = document.getElementById('itemName');
     const additionalFieldContainer = document.getElementById('additionalFieldContainer');
     const additionalInfo = document.getElementById('additionalInfo');

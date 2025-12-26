@@ -27,6 +27,7 @@ body {
     background: var(--white);
     color: var(--text-dark);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .medications-page {
@@ -46,6 +47,8 @@ body {
     padding: 0 20px;
     box-shadow: var(--shadow);
     z-index: 100;
+    position: sticky;
+    top: 0;
 }
 
 .logo-container {
@@ -53,7 +56,7 @@ body {
 }
 
 .logo {
-     font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 36px;
     line-height: 40px;
     font-weight: 700;
@@ -82,6 +85,7 @@ body {
     align-items: center;
     gap: 10px;
     width: 256px;
+    max-width: 100%;
 }
 
 .search-box i {
@@ -95,6 +99,7 @@ body {
     width: 100%;
     font-size: 14px;
     color: var(--text-dark);
+    background: transparent;
 }
 
 .header-actions {
@@ -117,6 +122,7 @@ body {
     cursor: pointer;
     color: var(--text-dark);
     transition: background 0.3s;
+    font-size: 16px;
 }
 
 .icon-btn:hover {
@@ -146,6 +152,10 @@ body {
     background: rgba(170, 213, 42, 0.56);
     border-right: 1px solid var(--medium-gray);
     padding: 20px 0;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px - 86px);
+    overflow-y: auto;
 }
 
 .sidebar-menu {
@@ -163,6 +173,7 @@ body {
     text-decoration: none;
     transition: all 0.3s;
     border-left: 3px solid transparent;
+    font-size: 14px;
 }
 
 .sidebar-item:hover {
@@ -246,6 +257,7 @@ body {
     background: var(--light-gray);
     padding: 20px;
     overflow-y: auto;
+    min-height: calc(100vh - 64px - 86px);
 }
 
 .content-header {
@@ -253,6 +265,8 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .content-header h1 {
@@ -274,6 +288,7 @@ body {
     gap: 10px;
     cursor: pointer;
     transition: background 0.3s;
+    white-space: nowrap;
 }
 
 .add-btn:hover {
@@ -289,10 +304,12 @@ body {
     gap: 4px;
     margin-bottom: 20px;
     box-shadow: var(--shadow);
+    flex-wrap: wrap;
 }
 
 .tab {
     flex: 1;
+    min-width: 120px;
     background: transparent;
     border: none;
     border-radius: 4px;
@@ -302,6 +319,7 @@ body {
     color: var(--dark-gray);
     cursor: pointer;
     transition: all 0.3s;
+    text-align: center;
 }
 
 .tab:hover {
@@ -319,10 +337,12 @@ body {
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .search-bar {
     flex: 2;
+    min-width: 250px;
     background: var(--white);
     border: 1px solid var(--medium-gray);
     border-radius: 6px;
@@ -342,10 +362,12 @@ body {
     width: 100%;
     font-size: 14px;
     color: var(--text-dark);
+    background: transparent;
 }
 
 .filter-dropdown {
     flex: 1;
+    min-width: 150px;
 }
 
 .filter-dropdown select {
@@ -357,6 +379,11 @@ body {
     font-size: 14px;
     color: var(--text-dark);
     cursor: pointer;
+    outline: none;
+}
+
+.filter-dropdown select:focus {
+    border-color: var(--primary-blue);
 }
 
 /* Medications Sections */
@@ -366,6 +393,7 @@ body {
     padding: 24px;
     margin-bottom: 20px;
     box-shadow: var(--shadow);
+    overflow: hidden;
 }
 
 .section-title {
@@ -373,6 +401,7 @@ body {
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .section-title h2 {
@@ -388,6 +417,8 @@ body {
     border-radius: 16px;
     font-size: 12px;
     font-weight: 500;
+    min-width: 24px;
+    text-align: center;
 }
 
 /* Medications Grid */
@@ -405,6 +436,7 @@ body {
     transition: all 0.3s;
     position: relative;
     box-shadow: var(--shadow);
+    overflow: hidden;
 }
 
 .medication-card:hover {
@@ -424,6 +456,7 @@ body {
     font-size: 18px;
     font-weight: 600;
     color: var(--text-dark);
+    word-break: break-word;
 }
 
 .status-badge {
@@ -431,6 +464,7 @@ body {
     border-radius: 16px;
     font-size: 12px;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .status-badge.active {
@@ -467,11 +501,13 @@ body {
 .info-item i {
     color: var(--primary-blue);
     width: 16px;
+    font-size: 14px;
 }
 
 .info-item span {
     font-size: 14px;
     color: var(--text-dark);
+    word-break: break-word;
 }
 
 .medication-image {
@@ -484,17 +520,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .medication-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--white);
 }
 
 .default-image {
     text-align: center;
     color: var(--dark-gray);
+    padding: 20px;
 }
 
 .default-image i {
@@ -503,14 +542,20 @@ body {
     color: var(--medium-gray);
 }
 
+.default-image p {
+    font-size: 14px;
+}
+
 .medication-actions {
     display: flex;
     gap: 10px;
     margin-top: 15px;
+    flex-wrap: wrap;
 }
 
 .action-btn {
     flex: 1;
+    min-width: 80px;
     padding: 8px 12px;
     border-radius: 6px;
     font-size: 12px;
@@ -522,6 +567,7 @@ body {
     cursor: pointer;
     transition: all 0.3s;
     border: 1px solid;
+    text-align: center;
 }
 
 .action-btn.view {
@@ -580,11 +626,14 @@ body {
 /* Medications Table */
 .medications-table-container {
     overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--light-gray);
 }
 
 .medications-table {
     width: 100%;
     border-collapse: collapse;
+    min-width: 600px;
 }
 
 .medications-table thead {
@@ -598,12 +647,14 @@ body {
     color: var(--dark-gray);
     font-size: 14px;
     border-bottom: 2px solid var(--medium-gray);
+    white-space: nowrap;
 }
 
 .medications-table td {
     padding: 12px 16px;
     border-bottom: 1px solid var(--light-gray);
     font-size: 14px;
+    vertical-align: middle;
 }
 
 .medications-table tbody tr:hover {
@@ -613,6 +664,7 @@ body {
 .table-actions {
     display: flex;
     gap: 8px;
+    flex-wrap: nowrap;
 }
 
 .table-btn {
@@ -627,6 +679,7 @@ body {
     background: transparent;
     color: var(--dark-gray);
     transition: all 0.3s;
+    font-size: 14px;
 }
 
 .table-btn:hover {
@@ -659,6 +712,7 @@ body {
     align-items: center;
     gap: 15px;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 .pharmacy-icon {
@@ -671,6 +725,7 @@ body {
     justify-content: center;
     color: var(--white);
     font-size: 20px;
+    flex-shrink: 0;
 }
 
 .pharmacy-info h3 {
@@ -703,6 +758,7 @@ body {
     gap: 10px;
     cursor: pointer;
     transition: background 0.3s;
+    white-space: nowrap;
 }
 
 .pharmacy-btn:hover {
@@ -788,6 +844,8 @@ body {
     z-index: 2000;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .modal.active {
@@ -797,10 +855,23 @@ body {
 .modal-content {
     background: var(--white);
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .modal-header {
@@ -809,6 +880,11 @@ body {
     align-items: center;
     padding: 24px;
     border-bottom: 1px solid var(--light-gray);
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    border-radius: 10px 10px 0 0;
+    z-index: 1;
 }
 
 .modal-header h3 {
@@ -829,6 +905,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--error-red);
 }
 
 /* Form Styles */
@@ -840,10 +921,12 @@ body {
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .form-row .form-group {
     flex: 1;
+    min-width: 250px;
 }
 
 .form-group {
@@ -868,6 +951,7 @@ body {
     font-size: 14px;
     color: var(--text-dark);
     background: var(--white);
+    transition: border-color 0.3s;
 }
 
 .form-group input:focus,
@@ -875,42 +959,83 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(0, 59, 133, 0.1);
 }
 
-/* Image Upload */
-.image-upload-area {
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Image Upload - FIXED VERSION */
+.form-group.image-upload-group {
+    position: relative;
+    overflow: visible;
+}
+
+#imageUploadArea {
+    position: relative;
+    width: 100%;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border: 2px dashed var(--medium-gray);
     border-radius: 8px;
     padding: 30px 20px;
-    text-align: center;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    background: rgba(0, 59, 133, 0.02);
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 0;
 }
 
-.image-upload-area:hover {
+#imageUploadArea:hover {
     border-color: var(--primary-blue);
     background: rgba(0, 59, 133, 0.05);
 }
 
-.image-upload-area i {
-    font-size: 36px;
+#imageUploadArea i {
+    font-size: 40px;
     color: var(--medium-gray);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    transition: color 0.3s;
 }
 
-.image-upload-area p {
+#imageUploadArea:hover i {
+    color: var(--primary-blue);
+}
+
+#imageUploadArea p {
     color: var(--dark-gray);
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    text-align: center;
 }
 
-.file-info {
+#imageUploadArea .file-info {
     font-size: 12px;
     color: var(--medium-gray);
+}
+
+#medicationImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
 }
 
 .image-preview {
     margin-top: 15px;
     display: none;
+    width: 100%;
+    text-align: center;
 }
 
 .image-preview.active {
@@ -922,6 +1047,9 @@ body {
     max-height: 200px;
     border-radius: 8px;
     border: 1px solid var(--light-gray);
+    object-fit: contain;
+    background: var(--light-gray);
+    padding: 5px;
 }
 
 /* Days Selector */
@@ -937,11 +1065,13 @@ body {
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    font-size: 14px;
 }
 
 .day-checkbox input[type="checkbox"] {
     width: 16px;
     height: 16px;
+    cursor: pointer;
 }
 
 /* Details Modal */
@@ -958,6 +1088,7 @@ body {
     align-items: center;
     gap: 20px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .medication-image-large {
@@ -966,12 +1097,15 @@ body {
     border-radius: 8px;
     overflow: hidden;
     border: 2px solid var(--light-gray);
+    flex-shrink: 0;
+    background: var(--light-gray);
 }
 
 .medication-image-large img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--white);
 }
 
 .medication-info h4 {
@@ -979,6 +1113,7 @@ body {
     font-weight: 600;
     color: var(--text-dark);
     margin-bottom: 10px;
+    word-break: break-word;
 }
 
 .details-grid {
@@ -1003,6 +1138,7 @@ body {
 .detail-item .value {
     color: var(--text-dark);
     font-size: 14px;
+    word-break: break-word;
 }
 
 .details-section {
@@ -1019,11 +1155,13 @@ body {
 .details-section p {
     color: var(--dark-gray);
     line-height: 1.6;
+    word-break: break-word;
 }
 
 .details-actions {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 /* Form Actions */
@@ -1032,6 +1170,7 @@ body {
     justify-content: flex-end;
     gap: 15px;
     margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .cancel-btn {
@@ -1042,6 +1181,8 @@ body {
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .cancel-btn:hover {
@@ -1059,6 +1200,8 @@ body {
     gap: 10px;
     cursor: pointer;
     transition: background 0.3s;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .save-btn:hover {
@@ -1077,6 +1220,8 @@ body {
     z-index: 3000;
     animation: slideIn 0.3s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    max-width: 400px;
+    word-break: break-word;
 }
 
 .message.success {
@@ -1101,51 +1246,66 @@ body {
     to { transform: translateX(100%); opacity: 0; }
 }
 
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light-gray);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--medium-gray);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-gray);
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .medications-grid {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 1024px) {
+    .medications-page {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
     }
     
     .sidebar {
         display: none;
     }
     
-    .medications-page {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 992px) {
-    .search-container {
-        display: none;
-    }
-    
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    .footer-content {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-    
-    .links-menu {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .floating-chatbot {
-        bottom: 80px;
-        right: 20px;
+    .main-content {
+        min-height: calc(100vh - 64px - 86px);
     }
 }
 
 @media (max-width: 768px) {
     .top-header {
-        padding: 10px;
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 64px;
+    }
+    
+    .search-container {
+        order: 3;
+        flex: 1 0 100%;
+        margin-top: 10px;
+        justify-content: flex-start;
+    }
+    
+    .search-box {
+        width: 100%;
+        max-width: 100%;
     }
     
     .content-header {
@@ -1155,15 +1315,22 @@ body {
     }
     
     .tabs-container {
-        flex-wrap: wrap;
+        flex-direction: column;
     }
     
     .tab {
-        flex: 1 0 calc(50% - 8px);
+        width: 100%;
+        text-align: left;
     }
     
     .search-filter-bar {
         flex-direction: column;
+        gap: 10px;
+    }
+    
+    .search-bar,
+    .filter-dropdown {
+        width: 100%;
     }
     
     .medications-grid {
@@ -1178,8 +1345,129 @@ body {
         flex-direction: column;
     }
     
+    .action-btn {
+        width: 100%;
+    }
+    
     .chatbot-logo {
         width: 60px;
         height: 60px;
+    }
+    
+    .floating-chatbot {
+        bottom: 80px;
+        right: 20px;
+    }
+    
+    .form-row .form-group {
+        min-width: 100%;
+    }
+    
+    .modal-content {
+        max-height: 95vh;
+        margin: 10px;
+    }
+    
+    .modal-header,
+    #medicationForm,
+    .details-content {
+        padding: 20px;
+    }
+    
+    #imageUploadArea {
+        min-height: 140px;
+        padding: 25px 15px;
+    }
+    
+    #imageUploadArea i {
+        font-size: 32px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .links-menu {
+        justify-content: center;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-header h1 {
+        font-size: 24px;
+    }
+    
+    .section-title h2 {
+        font-size: 18px;
+    }
+    
+    .medications-section {
+        padding: 15px;
+    }
+    
+    .medication-card {
+        padding: 15px;
+    }
+    
+    .modal-header h3 {
+        font-size: 18px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cancel-btn,
+    .save-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .logo {
+        font-size: 28px;
+    }
+    
+    .floating-chatbot {
+        bottom: 70px;
+        right: 15px;
+    }
+    
+    .chatbot-logo {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .top-header,
+    .sidebar,
+    .floating-chatbot,
+    .footer,
+    .add-btn,
+    .action-btn,
+    .icon-btn {
+        display: none !important;
+    }
+    
+    .medications-page {
+        display: block;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .main-content {
+        padding: 0;
+        background: white;
+    }
+    
+    .medications-section {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
     }
 }

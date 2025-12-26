@@ -17,6 +17,52 @@ ul {
   padding: 0;
 }
 
+/* Header Styles */
+.header {
+  background: #ffffff;
+  padding: 20px 0;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo-part1 {
+  color: #003785;
+}
+
+.logo-part2 {
+  color: #779f00;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-item a {
+  color: #003785;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-item a:hover {
+  color: #779f00;
+}
+
 /* Main Sign Up Styles */
 .sign-up,
 .sign-up * {
@@ -25,26 +71,29 @@ ul {
 
 .sign-up {
   background: #ffffff;
-  height: 985px;
+  min-height: 100vh;
   position: relative;
   box-shadow: 0px 3px 6px 0px rgba(18, 15, 40, 0.12);
   overflow: hidden;
-  /* إضافة display flex للتوسيط */
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .sign-up__container {
   background: #ffffff;
   border-radius: 10px;
-  width: 448px;
-  height: 921px;
-  /* إزالة position: absolute وإعادة تعيينه */
+  width: 100%;
+  max-width: 448px;
+  height: auto;
+  min-height: 921px;
   position: relative;
   box-shadow: 0px 0px 1px 0px rgba(23, 26, 31, 0.15),
     0px 0px 2px 0px rgba(23, 26, 31, 0.2);
+  padding-bottom: 40px;
 }
+
 .sign-up__create-your-account {
   color: #003785;
   text-align: center;
@@ -53,9 +102,11 @@ ul {
   line-height: 36px;
   letter-spacing: -0.75px;
   font-weight: 700;
-  position: absolute;
-  left: 84px;
-  top: 92px;
+  position: relative;
+  margin: 92px auto 40px;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 
 /* Text Fields */
@@ -68,16 +119,16 @@ ul {
   background: rgba(0, 0, 0, 0);
   width: 400px;
   height: 66px;
-  position: absolute;
-  left: 24px;
+  position: relative;
+  margin: 0 auto 20px;
 }
 
-.sign-up__textbox { top: 176px; }
-.sign-up__textbox2 { top: 248px; }
-.sign-up__textbox3 { top: 416px; }
-.sign-up__textbox4 { top: 488px; }
-.sign-up__textbox5 { top: 572px; }
-.sign-up__textbox6 { top: 644px; }
+.sign-up__textbox { margin-top: 20px; }
+.sign-up__textbox2 { margin-top: 20px; }
+.sign-up__textbox3 { margin-top: 20px; }
+.sign-up__textbox4 { margin-top: 20px; }
+.sign-up__textbox5 { margin-top: 20px; }
+.sign-up__textbox6 { margin-top: 20px; }
 
 .sign-up__full-name,
 .sign-up__national-id,
@@ -91,28 +142,18 @@ ul {
   font-size: 12px;
   line-height: 20px;
   font-weight: 500;
-  position: absolute;
-  top: 0px;
+  margin-bottom: 8px;
+  display: block;
 }
-
-.sign-up__full-name { right: 345px; left: 0px; }
-.sign-up__national-id { right: 339px; left: 0px; }
-.sign-up__phone-number { right: 316px; left: 0px; }
-.sign-up__email-address { right: 321px; left: 0px; }
-.sign-up__password { right: 345px; left: 0px; }
-.sign-up__confirm-password { right: 297px; left: 0px; }
 
 .sign-up__textfield {
   background: #ffffff;
   border-radius: 6px;
-  border-style: solid;
-  border-color: #dee1e6;
-  border-width: 1px;
-  position: absolute;
-  right: 1px;
-  left: 0px;
-  bottom: 1px;
-  top: 28px;
+  border: 1px solid #dee1e6;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
 }
 
 /* Input Fields */
@@ -125,7 +166,6 @@ ul {
   font-family: "Manrope-Regular", sans-serif;
   font-size: 14px;
   color: #565e6c;
-  padding: 0 12px;
 }
 
 .input-field::placeholder {
@@ -140,24 +180,20 @@ ul {
   font-size: 14px;
   line-height: 14px;
   font-weight: 500;
-  position: absolute;
-  left: 24px;
-  top: 331px;
+  margin: 30px 0 8px 24px;
 }
 
 .sign-up__button.date-btn {
   background: #ffffff;
   border-radius: 6px;
-  border-style: solid;
-  border-color: #dee1e6;
-  border-width: 1px;
+  border: 1px solid #dee1e6;
   width: 194px;
   height: 40px;
-  position: absolute;
-  left: 24px;
-  top: 352px;
+  margin: 0 0 20px 24px;
   overflow: hidden;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .date-input {
@@ -181,23 +217,23 @@ ul {
   font-size: 14px;
   line-height: 14px;
   font-weight: 500;
+  margin: 30px 0 8px 230px;
   position: absolute;
-  left: 230px;
-  top: 331px;
+  top: 345px;
 }
 
 .sign-up__dropdown-button.gender-btn {
   background: #ffffff;
   border-radius: 6px;
-  border-style: solid;
-  border-color: #dee1e6;
-  border-width: 1px;
+  border: 1px solid #dee1e6;
   width: 193px;
   height: 39px;
   position: absolute;
   left: 230px;
-  top: 352px;
+  top: 376px;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .gender-select {
@@ -218,31 +254,31 @@ ul {
   background: rgba(0, 0, 0, 0);
   width: 250px;
   height: 44px;
-  position: absolute;
-  left: 24px;
-  top: 714px;
+  margin: 40px auto 20px;
+  display: flex;
+  align-items: center;
 }
 
 .sign-up__frame {
-  background: rgba(0, 0, 0, 0);
-  width: 250px;
-  height: 44px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .sign-up__rectangle {
   background: #ffffff;
   border-radius: 3px;
-  border-style: solid;
-  border-color: #565e6c;
-  border-width: 1px;
+  border: 1px solid #565e6c;
   width: 16px;
   height: 16px;
-  position: absolute;
-  left: 0px;
-  top: 3px;
+  min-width: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sign-up__rectangle.checked {
+  background: #779f00 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='9' viewBox='0 0 12 9' fill='none'%3E%3Cpath d='M10.6667 1L4.25 7.41667L1.33333 4.5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center center;
+  border-color: #779f00;
 }
 
 .sign-up__i-agree-to-the-terms-privacy-policy {
@@ -251,10 +287,6 @@ ul {
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
-  position: absolute;
-  left: 24px;
-  top: 0px;
-  width: 226px;
 }
 
 .i-agree-to-the-terms-privacy-policy-span {
@@ -264,6 +296,7 @@ ul {
 .i-agree-to-the-terms-privacy-policy-span2 {
   color: #779f00;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 /* Complete Account Button */
@@ -273,10 +306,18 @@ ul {
   opacity: 0.5;
   width: 400px;
   height: 44px;
-  position: absolute;
-  left: 24px;
-  top: 768px;
-  overflow: hidden;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: not-allowed;
+  transition: all 0.3s;
+}
+
+.sign-up__button2.active {
+  opacity: 1;
+  background: #779f00;
+  cursor: pointer;
 }
 
 .sign-up__complete-my-account {
@@ -286,20 +327,14 @@ ul {
   font-size: 14px;
   line-height: 22px;
   font-weight: 500;
-  position: absolute;
-  left: calc(50% - 73.5px);
-  top: 50%;
-  translate: 0 -50%;
 }
 
 /* Separator Line */
 .sign-up__line {
   width: 400px;
-  height: 0px;
-  position: absolute;
-  left: 24px;
-  top: 861px;
-  overflow: visible;
+  height: 1px;
+  background: #dee1e6;
+  margin: 40px auto 20px;
 }
 
 /* Login Button */
@@ -308,10 +343,11 @@ ul {
   border-radius: 6px;
   width: 40px;
   height: 40px;
-  position: absolute;
-  left: 291px;
-  top: 878px;
-  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .sign-up__log-in {
@@ -321,24 +357,72 @@ ul {
   font-size: 14px;
   line-height: 22px;
   font-weight: 500;
-  position: absolute;
-  left: 50%;
-  translate: -50% -50%;
-  top: 50%;
 }
 
 .sign-up__already-have-an-account {
   color: #565e6c;
-  text-align: left;
+  text-align: center;
   font-family: "Manrope-Regular", sans-serif;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  position: absolute;
-  left: 123px;
-  top: 879px;
+  margin-top: 10px;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .nav-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .sign-up__container {
+    margin: 20px;
+    width: calc(100% - 40px);
+  }
+  
+  .sign-up__textbox,
+  .sign-up__textbox2,
+  .sign-up__textbox3,
+  .sign-up__textbox4,
+  .sign-up__textbox5,
+  .sign-up__textbox6,
+  .sign-up__button2,
+  .sign-up__line {
+    width: calc(100% - 48px);
+  }
+  
+  .sign-up__button.date-btn,
+  .sign-up__dropdown-button.gender-btn {
+    position: relative;
+    left: 0;
+    margin: 0 auto 20px;
+    display: block;
+  }
+  
+  .sign-up__gender,
+  .sign-up__date-of-birth {
+    position: relative;
+    left: 0;
+    margin: 20px 0 8px 24px;
+    top: 0;
+  }
+  
+  .sign-up__dropdown-button.gender-btn {
+    left: 0;
+    top: 0;
+    margin: 0 0 20px 24px;
+  }
+  
+  .sign-up__checkbox {
+    width: calc(100% - 48px);
+  }
+}
 
 
 
@@ -492,6 +576,33 @@ complete-account */
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 75, 146, 0.3);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Main Complete Account Styles */

@@ -9,511 +9,417 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-left">
+    <div class="profile-page">
+        <!-- Top Header -->
+        <div class="top-header">
+            <div class="logo-container">
+                <div class="logo">
+                    <span class="logo-blue"><b>Cardio</b></span>
+                    <span class="logo-green">AI</span>
+                </div>
+            </div>
             
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search medical records, appointments...">
+                </div>
+            </div>
+            
+            <div class="header-actions">
 
-                <div class="logo-text">
-                    <span class="logo-part1">Cardio</span>
-                    <span class="logo-part2">AI</span>
+                
+                <div class="profile-avatar-container">
+                    
                 </div>
             </div>
         </div>
-        
-        <div class="header-center">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search medical records, appointments...">
-            </div>
-        </div>
-        
-        <div class="header-right">
-            <a href="notifications.html" class="header-icon">
-                <i class="fas fa-bell"></i>
-                <span class="notification-badge">2</span>
-            </a>
-            <a href="/patient/profile/profile.html" class="header-icon">
-                <i class="fas fa-cog"></i>
-            </a>
-           
-        </div>
-    </header>
 
-    <div class="container">
         <!-- Sidebar -->
-        <aside class="sidebar">
-            <nav class="sidebar-nav">
-                <a href="/patient/dashboard/dashboard.html" class="nav-item">
+        <div class="sidebar">
+            <div class="sidebar-menu">
+                <a href="/patient/dashboard/dashboard.html" class="sidebar-item">
                     <i class="fas fa-home"></i>
-                    <span>dashboard</span>
+                    <span>Dashboard</span>
                 </a>
-                <a href="/patient/profile/profile.html" class="nav-item">
+                
+                <a href="/patient/profile/profile.html" class="sidebar-item">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
-                <a href="/patient/Medical Records/medicalrecords1.html" class="nav-item">
+                
+                <a href="/patient/Medical Records/medicalrecords1.html" class="sidebar-item">
                     <i class="fas fa-file-medical"></i>
                     <span>Medical Records</span>
                 </a>
-                <a href="/patient/appointments/appiontment.html" class="nav-item">
-                    <i class="fas fa-calendar-alt"></i>
+                
+                <a href="/patient/appointments/appointment.html" class="sidebar-item active">
+                    <i class="fas fa-calendar-check"></i>
                     <span>Appointments</span>
                 </a>
-                <a href="/patient/medications/medications.html" class="nav-item">
+                
+                <a href="/patient/medications/medications.html" class="sidebar-item">
                     <i class="fas fa-pills"></i>
                     <span>Medications</span>
                 </a>
-                <a href="/patient/notifications/notification.html" class="nav-item active">
+                
+                <a href="/patient/notifications/notification.html" class="sidebar-item">
                     <i class="fas fa-bell"></i>
                     <span>Notifications</span>
                 </a>
-            </nav>
-            
-            
-
-        </aside>
+            </div>
+        </div>
 
         <!-- Main Content -->
-        <main class="main-content">
-            <div class="page-header">
-                <h1 class="page-title">Appointments</h1>
+        <div class="main-content">
+            <!-- Page Header -->
+            <div class="content-header">
+                <h1>Appointments</h1>
+                <p class="page-subtitle">Smart follow-up scheduling based on your health data</p>
             </div>
-            
-            <div class="appointments-layout">
-                <!-- Book New Appointment Section -->
-                <div class="booking-section">
-                    <h2 class="section-title">Book New Appointment</h2>
-                    
-                    <div class="booking-form">
-                        <div class="form-group">
-                            <label for="specialty">Select Specialty</label>
-                            <div class="custom-select">
-                                <select id="specialty">
-                                    <option value="">Choose Specialty</option>
-                                    <option value="cardiology">Cardiology</option>
-                                    <option value="dermatology">Dermatology</option>
-                                    <option value="pediatrics">Pediatrics</option>
-                                    <option value="neurology">Neurology</option>
-                                    <option value="orthopedics">Orthopedics</option>
-                                </select>
-                                
+
+            <!-- Patient Health Summary Cards -->
+            <div class="health-summary-cards">
+
+                <!-- Current Risk Status Card -->
+                <div class="health-card">
+                    <div class="health-card-header">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Current Risk Status</h3>
+                    </div>
+                    <div class="health-card-content">
+                        <div class="risk-status" id="riskStatus">
+                            <span class="risk-indicator stable">Stable</span>
+                        </div>
+                        <p class="risk-description">Your heart data shows normal patterns</p>
+                        <div class="risk-details">
+                            <div class="risk-metric">
+                                <span>Heart Rate</span>
+                                <span class="metric-value normal">72 bpm</span>
+                            </div>
+                            <div class="risk-metric">
+                                <span>Blood Pressure</span>
+                                <span class="metric-value normal">120/80</span>
                             </div>
                         </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="doctor">Choose Doctor</label>
-                                <div class="custom-select">
-                                    <select id="doctor">
-                                        <option value="">Select Doctor</option>
-                                        <option value="dr_emily">Dr. Emily White (Cardiology)</option>
-                                        <option value="dr_david">Dr. David Lee (Dermatology)</option>
-                                        <option value="dr_sarah">Dr. Sarah Chen (Pediatrics)</option>
-                                    </select>
-                                   
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="hospital">Choose Hospital</label>
-                                <div class="custom-select">
-                                    <select id="hospital">
-                                        <option value="">Select Hospital</option>
-                                        <option value="cardio_clinic">Cardio Clinic</option>
-                                        <option value="skin_health">Skin Health Center</option>
-                                        <option value="children_hub">Children's Health Hub</option>
-                                        <option value="general_hospital">General Hospital</option>
-                                    </select>
-                                  
-                                </div>
-                            </div>
+                    </div>
+                </div>
+
+                <!-- Last AI Recommendation Card -->
+                <div class="health-card">
+                    <div class="health-card-header">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Recommendation</h3>
+                    </div>
+                    <div class="health-card-content">
+                        <div class="ai-recommendation">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>Based on your recent heart data, regular monitoring is recommended every 2 weeks.</p>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="appointment-type">Select Type</label>
-                            <div class="custom-select">
-                                <select id="appointment-type">
-                                    <option value="">Choose Appointment Type</option>
-                                    <option value="checkup">General Check-up</option>
-                                    <option value="consultation">Consultation</option>
-                                    <option value="followup">Follow-up</option>
-                                    <option value="emergency">Emergency</option>
-                                </select>
-                               
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="date">Select Date</label>
-                            <div class="date-input">
-                                <input type="date" id="date" value="2025-09-19">
-                               
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Select Time Slot</label>
-                            <div class="time-slots">
-                                <button class="time-slot">09:00 AM</button>
-                                <button class="time-slot active">10:00 AM</button>
-                                <button class="time-slot">11:00 AM</button>
-                                <button class="time-slot">02:00 PM</button>
-                                <button class="time-slot">03:00 PM</button>
-                                <button class="time-slot">04:00 PM</button>
-                            </div>
-                        </div>
-                        
-                        <button class="confirm-booking-btn">
-                            <i class="fas fa-calendar-check"></i>
-                            Confirm Booking
+                        <button class="ai-details-btn">
+                            <i class="fas fa-chart-line"></i>
+                            View Detailed Analysis
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <div class="section-header">
+                    <h2>Schedule Appointment</h2>
+                    <div class="calendar-navigation">
+                        <button class="calendar-nav-btn" id="prevMonth">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h3 id="currentMonth">January 2025</h3>
+                        <button class="calendar-nav-btn" id="nextMonth">
+                            <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
                 </div>
                 
-                <!-- My Appointments Section -->
-                <div class="appointments-section">
-                    <h2 class="section-title">My Appointments</h2>
-                    
-                    <div class="appointments-tabs">
-                        <button class="appointment-tab active" data-tab="upcoming">
-                            <i class="fas fa-calendar-alt"></i>
-                            Upcoming
-                        </button>
-                        <button class="appointment-tab" data-tab="past">
-                            <i class="fas fa-history"></i>
-                            Past
-                        </button>
+                <div class="calendar-container">
+                    <div class="calendar-weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
                     </div>
-                    
-                    <!-- Upcoming Appointments -->
-                    <div class="appointments-list active" id="upcoming-appointments">
-                        <!-- Appointment Card 1 -->
-                        <div class="appointment-card upcoming">
-                            <div class="appointment-header">
-                                <h3 class="appointment-title">Jan 25, 2025, 10:00 AM</h3>
-                                <span class="appointment-status upcoming">Upcoming</span>
-                            </div>
-                            <div class="appointment-details">
-                                <div class="appointment-info">
-                                    <i class="fas fa-user-md"></i>
-                                    <div>
-                                        <p class="doctor-name">Dr. Emily White</p>
-                                        <p class="specialty">Cardiology</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <div>
-                                        <p class="location">Cardio Clinic, Suite 101</p>
-                                        <p class="address">123 Medical Center Dr</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-notes-medical"></i>
-                                    <div>
-                                        <p class="appointment-type">General Check-up</p>
-                                        <p class="appointment-id">#APT-2025-001</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="appointment-actions">
-                                <div class="reminder-toggle">
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" checked>
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                    <span>SMS Reminder</span>
-                                </div>
-                                <div class="action-buttons">
-                                    <button class="action-btn reschedule">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        Reschedule
-                                    </button>
-                                    <button class="action-btn cancel">
-                                        <i class="fas fa-times"></i>
-                                        Cancel
-                                    </button>
-                                </div>
+                    <div class="calendar-days" id="calendarDays">
+                        <!-- Calendar days will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appointment Booking Form -->
+            <div class="profile-section" id="bookingSection">
+                <div class="section-header">
+                    <h2 id="formTitle">Book New Appointment</h2>
+                </div>
+
+                <!-- AI Recommendation Box -->
+                <div class="ai-recommendation-box" id="aiRecommendationBox">
+                    <div class="ai-recommendation-header">
+                        <i class="fas fa-robot"></i>
+                        <h4>AI Insight</h4>
+                    </div>
+                    <p id="aiRecommendationText">Based on your recent heart data, regular monitoring is recommended every 2 weeks.</p>
+                    <div class="ai-warning" id="aiWarning" style="display: none;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Warning: High-risk condition detected. Earlier appointment is strongly recommended.</span>
+                    </div>
+                </div>
+
+                <form id="appointmentForm">
+                    <div class="form-grid">
+                        <!-- Doctor Selection -->
+                        <div class="form-group">
+                            <label for="doctorSelect">Select Doctor</label>
+                            <div class="custom-select-wrapper">
+                                <select id="doctorSelect" class="editable-field" required>
+                                    <option value="">Choose Doctor</option>
+                                    <option value="dr_emily">Dr. Emily White (Cardiologist)</option>
+                                    <option value="dr_david">Dr. David Lee (Dermatology)</option>
+                                    <option value="dr_sarah">Dr. Sarah Chen (Pediatrics)</option>
+                                    <option value="dr_michael">Dr. Michael Brown (Neurology)</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
                             </div>
                         </div>
-                        
-                        <!-- Appointment Card 2 -->
-                        <div class="appointment-card upcoming">
-                            <div class="appointment-header">
-                                <h3 class="appointment-title">Feb 10, 2025, 02:30 PM</h3>
-                                <span class="appointment-status upcoming">Upcoming</span>
-                            </div>
-                            <div class="appointment-details">
-                                <div class="appointment-info">
-                                    <i class="fas fa-user-md"></i>
-                                    <div>
-                                        <p class="doctor-name">Dr. David Lee</p>
-                                        <p class="specialty">Dermatology</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <div>
-                                        <p class="location">Skin Health Center</p>
-                                        <p class="address">456 Skin Care Ave</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-notes-medical"></i>
-                                    <div>
-                                        <p class="appointment-type">Consultation</p>
-                                        <p class="appointment-id">#APT-2025-002</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="appointment-actions">
-                                <div class="reminder-toggle">
-                                    <label class="toggle-switch">
-                                        <input type="checkbox">
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                    <span>SMS Reminder</span>
-                                </div>
-                                <div class="action-buttons">
-                                    <button class="action-btn reschedule">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        Reschedule
-                                    </button>
-                                    <button class="action-btn cancel">
-                                        <i class="fas fa-times"></i>
-                                        Cancel
-                                    </button>
-                                </div>
+
+                        <!-- Visit Type -->
+                        <div class="form-group">
+                            <label for="visitType">Visit Type</label>
+                            <div class="custom-select-wrapper">
+                                <select id="visitType" class="editable-field" required>
+                                    <option value="">Select Visit Type</option>
+                                    <option value="routine">Routine Follow-up</option>
+                                    <option value="post_op">Post-Operation Review</option>
+                                    <option value="ai_alert">AI Alert Follow-up</option>
+                                    <option value="urgent">Urgent Consultation</option>
+                                </select>
+                                <i class="fas fa-chevron-down select-arrow"></i>
                             </div>
                         </div>
-                        
-                        <!-- Appointment Card 3 -->
-                        <div class="appointment-card upcoming">
-                            <div class="appointment-header">
-                                <h3 class="appointment-title">Mar 05, 2025, 09:45 AM</h3>
-                                <span class="appointment-status upcoming">Upcoming</span>
+
+                        <!-- Selected Date -->
+                        <div class="form-group">
+                            <label for="selectedDate">Selected Date</label>
+                            <div class="date-input-wrapper">
+                                <input type="text" id="selectedDate" class="editable-field" readonly placeholder="Click on a date in calendar" required>
+                                <i class="fas fa-calendar-alt"></i>
                             </div>
-                            <div class="appointment-details">
-                                <div class="appointment-info">
-                                    <i class="fas fa-user-md"></i>
-                                    <div>
-                                        <p class="doctor-name">Dr. Sarah Chen</p>
-                                        <p class="specialty">Pediatrics</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <div>
-                                        <p class="location">Children's Health Hub</p>
-                                        <p class="address">789 Pediatrics St</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-notes-medical"></i>
-                                    <div>
-                                        <p class="appointment-type">Follow-up</p>
-                                        <p class="appointment-id">#APT-2025-003</p>
-                                    </div>
+                        </div>
+
+                        <!-- Time Slot -->
+                        <div class="form-group">
+                            <label for="timeSlot">Time Slot</label>
+                            <div class="time-slots-container">
+                                <div class="time-slots-grid" id="timeSlotsGrid">
+                                    <!-- Time slots will be populated by JavaScript -->
                                 </div>
                             </div>
-                            <div class="appointment-actions">
-                                <div class="reminder-toggle">
-                                    <label class="toggle-switch">
-                                        <input type="checkbox" checked>
-                                        <span class="toggle-slider"></span>
-                                    </label>
-                                    <span>SMS Reminder</span>
-                                </div>
-                                <div class="action-buttons">
-                                    <button class="action-btn reschedule">
-                                        <i class="fas fa-calendar-alt"></i>
-                                        Reschedule
-                                    </button>
-                                    <button class="action-btn cancel">
-                                        <i class="fas fa-times"></i>
-                                        Cancel
-                                    </button>
-                                </div>
-                            </div>
+                            <input type="hidden" id="selectedTime" required>
+                        </div>
+
+                        <!-- Reason for Visit -->
+                        <div class="form-group full-width">
+                            <label for="reason">Reason for Visit</label>
+                            <textarea id="reason" rows="3" placeholder="Briefly describe the reason for your appointment..." class="editable-field"></textarea>
                         </div>
                     </div>
-                    
-                    <!-- Past Appointments -->
-                    <div class="appointments-list" id="past-appointments">
-                        <!-- Past Appointment Card 1 -->
-                        <div class="appointment-card past">
-                            <div class="appointment-header">
-                                <h3 class="appointment-title">Dec 15, 2024, 11:00 AM</h3>
-                                <span class="appointment-status completed">Completed</span>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn" id="cancelBookingBtn">Cancel</button>
+                        <button type="submit" class="save-btn" id="submitBookingBtn">
+                            <i class="fas fa-calendar-check"></i>
+                            Confirm Booking
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Confirmation Section -->
+            <div class="confirmation-section" id="confirmationSection" style="display: none;">
+                <div class="section-header">
+                    <h2>Appointment Confirmed!</h2>
+                    <p class="confirmation-message">Your appointment has been successfully scheduled.</p>
+                </div>
+
+                <div class="appointment-summary">
+                    <h3>Appointment Details</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <strong>Appointment ID:</strong>
+                            <span id="summaryId">APT-2025-001</span>
+                        </div>
+                        <div class="summary-item">
+                            <strong>Date:</strong>
+                            <span id="summaryDate">January 25, 2025</span>
+                        </div>
+                        <div class="summary-item">
+                            <strong>Time:</strong>
+                            <span id="summaryTime">10:00 AM</span>
+                        </div>
+                        <div class="summary-item">
+                            <strong>Doctor:</strong>
+                            <span id="summaryDoctor">Dr. Emily White</span>
+                        </div>
+                        <div class="summary-item">
+                            <strong>Visit Type:</strong>
+                            <span id="summaryType">Routine Follow-up</span>
+                        </div>
+                        <div class="summary-item">
+                            <strong>Status:</strong>
+                            <span class="status-badge confirmed">Confirmed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <button class="action-btn primary" id="backToBookingBtn">
+                        <i class="fas fa-calendar-plus"></i>
+                        Book Another Appointment
+                    </button>
+                    <button class="action-btn" id="viewAppointmentsBtn">
+                        <i class="fas fa-list"></i>
+                        View My Appointments
+                    </button>
+                </div>
+            </div>
+
+            <!-- My Appointments Section -->
+            <div class="profile-section">
+                <div class="section-header">
+                    <h2>My Appointments</h2>
+                </div>
+
+                <div class="appointments-tabs">
+                    <button class="appointment-tab active" data-tab="upcoming">
+                        <i class="fas fa-calendar-alt"></i>
+                        Upcoming
+                    </button>
+                    <button class="appointment-tab" data-tab="past">
+                        <i class="fas fa-history"></i>
+                        Past
+                    </button>
+                </div>
+
+                <!-- Upcoming Appointments -->
+                <div class="appointments-list active" id="upcomingAppointments">
+                    <!-- Appointment 1 -->
+
+
+
+                <!-- Past Appointments -->
+                <div class="appointments-list" id="pastAppointments">
+                    <!-- Past Appointment -->
+                    <div class="appointment-card" data-id="APT-2024-011">
+                        <div class="appointment-card-header">
+                            <span class="appointment-card-id">APT-2024-011</span>
+                            <span class="status-badge completed">Completed</span>
+                        </div>
+                        <div class="appointment-card-date">November 20, 2024 • 11:00 AM</div>
+                        
+                        <div class="appointment-card-details">
+                            <div class="appointment-card-detail">
+                                <label>Doctor</label>
+                                <span>Dr. Emily White (Cardiologist)</span>
                             </div>
-                            <div class="appointment-details">
-                                <div class="appointment-info">
-                                    <i class="fas fa-user-md"></i>
-                                    <div>
-                                        <p class="doctor-name">Dr. Michael Brown</p>
-                                        <p class="specialty">Neurology</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <div>
-                                        <p class="location">Neuro Care Center</p>
-                                        <p class="address">101 Brain Ave</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-notes-medical"></i>
-                                    <div>
-                                        <p class="appointment-type">Consultation</p>
-                                        <p class="appointment-id">#APT-2024-045</p>
-                                    </div>
-                                </div>
+                            <div class="appointment-card-detail">
+                                <label>Visit Type</label>
+                                <span>Post-Operation Review</span>
                             </div>
-                            <div class="appointment-actions">
-                                <button class="action-btn view-details">
-                                    <i class="fas fa-eye"></i>
-                                    View Details
-                                </button>
-                                <button class="action-btn download-report">
-                                    <i class="fas fa-download"></i>
-                                    Download Report
-                                </button>
+                            <div class="appointment-card-detail">
+                                <label>Duration</label>
+                                <span>60 minutes</span>
                             </div>
                         </div>
                         
-                        <!-- Past Appointment Card 2 -->
-                        <div class="appointment-card past">
-                            <div class="appointment-header">
-                                <h3 class="appointment-title">Nov 22, 2024, 03:15 PM</h3>
-                                <span class="appointment-status completed">Completed</span>
-                            </div>
-                            <div class="appointment-details">
-                                <div class="appointment-info">
-                                    <i class="fas fa-user-md"></i>
-                                    <div>
-                                        <p class="doctor-name">Dr. Robert Wilson</p>
-                                        <p class="specialty">Orthopedics</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <div>
-                                        <p class="location">Bone & Joint Clinic</p>
-                                        <p class="address">202 Ortho St</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-notes-medical"></i>
-                                    <div>
-                                        <p class="appointment-type">Follow-up</p>
-                                        <p class="appointment-id">#APT-2024-038</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="appointment-actions">
-                                <button class="action-btn view-details">
-                                    <i class="fas fa-eye"></i>
-                                    View Details
-                                </button>
-                                <button class="action-btn download-report">
-                                    <i class="fas fa-download"></i>
-                                    Download Report
-                                </button>
-                            </div>
+                        <div class="appointment-card-reason">
+                            <label>Reason:</label>
+                            <span>Post-surgery checkup and recovery monitoring</span>
                         </div>
                         
-                        <!-- Past Appointment Card 3 -->
-                        <div class="appointment-card past cancelled">
-                            <div class="appointment-header">
-                                <h3 class="appointment-title">Oct 30, 2024, 09:30 AM</h3>
-                                <span class="appointment-status cancelled">Cancelled</span>
-                            </div>
-                            <div class="appointment-details">
-                                <div class="appointment-info">
-                                    <i class="fas fa-user-md"></i>
-                                    <div>
-                                        <p class="doctor-name">Dr. Emily White</p>
-                                        <p class="specialty">Cardiology</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <div>
-                                        <p class="location">Cardio Clinic</p>
-                                        <p class="address">123 Medical Center Dr</p>
-                                    </div>
-                                </div>
-                                <div class="appointment-info">
-                                    <i class="fas fa-notes-medical"></i>
-                                    <div>
-                                        <p class="appointment-type">General Check-up</p>
-                                        <p class="appointment-id">#APT-2024-029</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="appointment-actions">
-                                <button class="action-btn book-again">
-                                    <i class="fas fa-calendar-plus"></i>
-                                    Book Again
-                                </button>
-                                <button class="action-btn view-reason">
-                                    <i class="fas fa-info-circle"></i>
-                                    View Reason
-                                </button>
-                            </div>
+                        <!-- للمواعيد الماضية: زر View فقط -->
+                        <div class="appointment-card-actions">
+                            <button class="action-btn small view-btn" data-id="APT-2024-011">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+        </div>
 
         <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-logo">
-               
-                <div class="footer-logo-text">
-                    <span class="footer-logo-part1">Cardio</span>
-                    <span class="footer-logo-part2">AI</span>
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-blue">Cardio</span>
+                    <span class="logo-green">AI</span>
                 </div>
-            </div>
-            
-            <div class="footer-quick-links">
-                <span class="footer-section-title">Quick Links</span>
+                
                 <div class="footer-links">
-                    <a href="/startpage/home.html">Home</a>
-                    <a href="/startpage/home.html">Features</a>
-                    <a href="/startpage/home.html">About</a>
-                    <a href="/chatbot/mainpage.html">Chatbot</a>
+                   
+                    <div class="links-menu">
+                        <a href="/startpage/home.html">Home</a><br>
+                        <a href="/startpage/home.html">Features</a><br>
+                        <a href="/startpage/home.html">About</a><br>
+                        <a href="/chatbot/mainpage.html">Chatbot</a>
+                    </div>
                 </div>
+                
+                <a href="/registeration/doctor/patient/logout.html" class="logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Log out
+                </a>
             </div>
-            
-            <a href="/registeration/doctor/patient/logout.html" class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Log out</span>
-            </a>
         </div>
-    </footer>
 
-
-     <!-- Floating Chatbot Icon -->
+        <!-- Floating Chatbot Icon -->
         <div class="floating-chatbot">
             <a href="/chatbot/mainpage.html" class="chatbot-link">
                 <img src="chatbot.png" alt="AI Chatbot" class="chatbot-logo">
             </a>
         </div>
 
-    <!-- Appointment Modal -->
-    <div class="modal" id="appointment-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Appointment Details</h3>
-                <button class="close-modal">&times;</button>
+        <!-- Modals -->
+        <div class="modal" id="successModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Success!</h3>
+                    <button class="close-btn" id="closeSuccessModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p id="successMessage">Appointment booked successfully!</p>
+                    <button class="ok-btn" id="okBtn">OK</button>
+                </div>
             </div>
-            <div class="modal-body" id="modal-body">
-                <!-- Dynamic content will be inserted here -->
+        </div>
+
+        <div class="modal" id="cancelModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Cancel Appointment</h3>
+                    <button class="close-btn" id="closeCancelModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p id="cancelMessage">Are you sure you want to cancel this appointment?</p>
+                    <div class="modal-actions">
+                        <button class="cancel-btn" id="cancelNoBtn">No, Keep It</button>
+                        <button class="save-btn" id="cancelYesBtn">Yes, Cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

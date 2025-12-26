@@ -48,116 +48,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Sample data
     const medicationsData = [
         {
-            id: 1,
-            name: "Enertrop",
-            dosage: "5 mg",
-            frequency: "once-daily",
-            timeOfDay: "morning",
-            startDate: "2006-01-01",
-            endDate: "",
-            instructions: "Take with or without food. Do not chew or crush.",
-            doctor: "Dr. Emily White",
-            status: "active",
-            image: "",
-            refillDate: "2023-12-15"
+
+           
         },
         {
-            id: 2,
-            name: "Atorvastatin",
-            dosage: "20 mg",
-            frequency: "once-daily",
-            timeOfDay: "bedtime",
-            startDate: "2006-01-01",
-            endDate: "2006-02-02",
-            instructions: "Take at night. Avoid grapefruit juice.",
-            doctor: "Dr. John Smith",
-            status: "refill-due",
-            image: "",
-            refillDate: "2023-11-30"
+
         },
         {
-            id: 3,
-            name: "Amoxicillin",
-            dosage: "500 mg, 2 times daily",
-            frequency: "twice-daily",
-            timeOfDay: "",
-            startDate: "2023-09-15",
-            endDate: "2023-09-30",
-            instructions: "Take with food to avoid stomach upset.",
-            doctor: "Dr. Emily White",
-            status: "past",
-            image: "",
-            refillDate: ""
+
         },
         {
-            id: 4,
-            name: "Ibuprofen",
-            dosage: "200 mg, as needed",
-            frequency: "as-needed",
-            timeOfDay: "",
-            startDate: "2023-07-20",
-            endDate: "2023-08-20",
-            instructions: "Take with food. Do not exceed 1200mg per day.",
-            doctor: "Dr. John Smith",
-            status: "past",
-            image: "",
-            refillDate: ""
+
         },
         {
-            id: 5,
-            name: "Lisinopril",
-            dosage: "10 mg, once daily",
-            frequency: "once-daily",
-            timeOfDay: "morning",
-            startDate: "2023-05-10",
-            endDate: "2023-08-10",
-            instructions: "Take in the morning with or without food.",
-            doctor: "Dr. Anya Sharma",
-            status: "past",
-            image: "",
-            refillDate: ""
+
         },
         {
-            id: 6,
-            name: "Simvastatin",
-            dosage: "20 mg, once daily",
-            frequency: "once-daily",
-            timeOfDay: "bedtime",
-            startDate: "2023-03-01",
-            endDate: "2023-06-01",
-            instructions: "Take at bedtime for best results.",
-            doctor: "Dr. Emily White",
-            status: "past",
-            image: "",
-            refillDate: ""
+
         },
         {
-            id: 7,
-            name: "Metformin",
-            dosage: "500 mg, 2 times daily",
-            frequency: "twice-daily",
-            timeOfDay: "morning,evening",
-            startDate: "2023-01-25",
-            endDate: "2023-04-25",
-            instructions: "Take with meals to reduce side effects.",
-            doctor: "Dr. John Smith",
-            status: "past",
-            image: "",
-            refillDate: ""
+
         },
         {
-            id: 8,
-            name: "Vitamin D",
-            dosage: "1000 IU",
-            frequency: "once-daily",
-            timeOfDay: "morning",
-            startDate: "2023-10-01",
-            endDate: "",
-            instructions: "Take with breakfast.",
-            doctor: "Dr. Sarah Johnson",
-            status: "active",
-            image: "",
-            refillDate: "2023-12-01"
+
         }
     ];
 

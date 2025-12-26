@@ -4,7 +4,7 @@ mobileMenuToggle.className = 'mobile-menu-toggle';
 mobileMenuToggle.innerHTML = '<i class="fas fa-bars"></i>';
 
 const headerLeft = document.querySelector('.header-left');
-headerLeft.appendChild(mobileMenuToggle);
+headerLeft.insertBefore(mobileMenuToggle, headerLeft.firstChild);
 
 const sidebar = document.querySelector('.sidebar');
 const sidebarOverlay = document.createElement('div');
@@ -24,195 +24,250 @@ sidebarOverlay.addEventListener('click', () => {
 // Mark All as Read Functionality
 const markAllBtn = document.querySelector('.mark-all-btn');
 const notificationBadge = document.querySelector('.notification-badge');
+const notificationCards = document.querySelectorAll('.notification-card');
 
+markAllBtn.addEventListener('click', () => {
+    // Mark all notifications as read
+    notificationCards.forEach(card => {
+        card.classList.add('read-notification');
+    });
+    
+    // Reset badge counter
+    if (notificationBadge) {
+        notificationBadge.style.display = 'none';
+    }
+    
+    // Show success message
+    showToast('All notifications marked as read');
+});
 
-
-// Show Notification Details Function
-function showNotificationDetails(title, description) {
-    const detailModal = document.createElement('div');
-    detailModal.className = 'notification-detail-modal';
-    detailModal.innerHTML = `
-        <div class="notification-detail-content">
-            <div class="notification-detail-header">
-                <h3>${title}</h3>
-                <button class="close-detail-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="notification-detail-body">
-                <p>${description}</p>
-            </div>
-            <div class="notification-detail-footer">
-                <button class="detail-action-btn">
-                    <i class="fas fa-check"></i>
-                    Mark as Read
-                </button>
-                <button class="detail-action-btn">
-                    <i class="fas fa-share"></i>
-                    Share
-                </button>
-            </div>
-        </div>
-    `;
+// Filter notifications by type
+function filterNotifications(filterType) {
+    const cards = document.querySelectorAll('.notification-card');
+    const filterTabs = document.querySelectorAll('.filter-tab');
     
-    // Add styles
-    detailModal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1002;
-        padding: 20px;
-        font-family: 'Manrope', sans-serif;
-    `;
+    // Update active tab
+    filterTabs.forEach(tab => tab.classList.remove('active'));
+    event.target.classList.add('active');
     
-    const detailContent = detailModal.querySelector('.notification-detail-content');
-    detailContent.style.cssText = `
-        background: white;
-        border-radius: 12px;
-        max-width: 600px;
-        width: 100%;
-        max-height: 80vh;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-    `;
-    
-    const detailHeader = detailModal.querySelector('.notification-detail-header');
-    detailHeader.style.cssText = `
-        padding: 20px;
-        background: #003785;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    `;
-    
-    detailHeader.querySelector('h3').style.cssText = `
-        margin: 0;
-        font-size: 20px;
-        font-weight: 600;
-    `;
-    
-    const closeBtn = detailModal.querySelector('.close-detail-btn');
-    closeBtn.style.cssText = `
-        background: transparent;
-        color: white;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.2s;
-    `;
-    
-    closeBtn.addEventListener('mouseenter', () => {
-        closeBtn.style.background = 'rgba(255, 255, 255, 0.2)';
-    });
-    
-    closeBtn.addEventListener('mouseleave', () => {
-        closeBtn.style.background = 'transparent';
-    });
-    
-    const detailBody = detailModal.querySelector('.notification-detail-body');
-    detailBody.style.cssText = `
-        padding: 20px;
-        flex: 1;
-        overflow-y: auto;
-    `;
-    
-    detailBody.querySelector('p').style.cssText = `
-        color: #565e6c;
-        line-height: 1.6;
-        font-size: 16px;
-        margin: 0;
-    `;
-    
-    const detailFooter = detailModal.querySelector('.notification-detail-footer');
-    detailFooter.style.cssText = `
-        padding: 20px;
-        background: #f8f9fa;
-        display: flex;
-        gap: 12px;
-        justify-content: flex-end;
-        border-top: 1px solid #dee1e6;
-    `;
-    
-    const actionBtns = detailModal.querySelectorAll('.detail-action-btn');
-    actionBtns.forEach(btn => {
-        btn.style.cssText = `
-            padding: 10px 20px;
-            border-radius: 6px;
-            border: 1px solid #dee1e6;
-            background: white;
-            color: #171a1f;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s;
-        `;
+    // Filter cards
+    cards.forEach(card => {
+        const cardType = card.getAttribute('data-type');
         
-        btn.addEventListener('mouseenter', () => {
-            btn.style.background = '#f3f4f6';
-            btn.style.borderColor = '#003785';
-        });
-        
-        btn.addEventListener('mouseleave', () => {
-            btn.style.background = 'white';
-            btn.style.borderColor = '#dee1e6';
-        });
-        
-        btn.addEventListener('click', () => {
-            const action = btn.textContent.trim();
-            showToast(`${action} for: ${title}`);
-            detailModal.remove();
-        });
-    });
-    
-    document.body.appendChild(detailModal);
-    
-    // Close modal
-    closeBtn.addEventListener('click', () => {
-        detailModal.remove();
-    });
-    
-    // Close on overlay click
-    detailModal.addEventListener('click', (e) => {
-        if (e.target === detailModal) {
-            detailModal.remove();
+        if (filterType === 'all' || cardType === filterType) {
+            card.style.display = 'flex';
+        } else {
+            card.style.display = 'none';
         }
     });
 }
 
-// Initialize page functionality
-document.addEventListener('DOMContentLoaded', () => {
-    // Add any initialization code here
-    console.log('Notifications page loaded successfully');
+// Show notification details (for detailed view when clicked)
+function showNotificationDetails(card) {
+    const title = card.querySelector('.notification-title').textContent;
+    const description = card.querySelector('.notification-desc').textContent;
+    const time = card.querySelector('.notification-time').textContent;
+    const type = card.getAttribute('data-type');
     
-    // Check for new notifications
-    checkNewNotifications();
+    // Create modal content based on notification type
+    let detailedContent = '';
+    
+    switch(type) {
+        case 'critical':
+            detailedContent = `
+                <h4>Urgent Health Alert Details</h4>
+                <p>This alert was triggered by unusual patterns detected in your cardiac monitoring data.</p>
+                <div class="detail-section">
+                    <h5>Immediate Actions Recommended:</h5>
+                    <ul>
+                        <li>Contact your doctor immediately</li>
+                        <li>If experiencing chest pain, dizziness, or shortness of breath, seek emergency care</li>
+                        <li>Rest and avoid physical exertion</li>
+                        <li>Your care team has been automatically notified</li>
+                    </ul>
+                </div>
+                <div class="reassurance">
+                    <p><strong>Remember:</strong> Our system is designed to catch potential issues early. Prompt action can prevent complications.</p>
+                </div>
+            `;
+            break;
+            
+        case 'warning':
+            detailedContent = `
+                <h4>AI Health Warning Details</h4>
+                <p>This is a preventive alert based on predictive analysis of your health data.</p>
+                <div class="detail-section">
+                    <h5>Why this alert was generated:</h5>
+                    <ul>
+                        <li>Analysis of recent trends in your vital signs</li>
+                        <li>Comparison with your personal health baseline</li>
+                        <li>Identification of patterns that may indicate early issues</li>
+                    </ul>
+                </div>
+                <div class="reassurance">
+                    <p><strong>This is not an emergency.</strong> This alert allows you to take preventive action before a situation becomes urgent.</p>
+                </div>
+            `;
+            break;
+            
+        default:
+            detailedContent = `
+                <h4>Notification Details</h4>
+                <p>${description}</p>
+                <div class="detail-section">
+                    <h5>Additional Information:</h5>
+                    <p>Your health and safety are our top priority. This notification is part of our continuous monitoring system designed to keep you informed and protected.</p>
+                </div>
+            `;
+    }
+    
+    // Show detailed view (in practice, this would open a modal or new view)
+    alert(`Detailed View: ${title}\n\n${detailedContent}\n\nReceived: ${time}`);
+    
+    // Mark as read after viewing
+    card.classList.add('read-notification');
+}
+
+// Add click handlers to notification cards
+notificationCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+        // Don't trigger if clicking on action buttons
+        if (!e.target.closest('.notification-action-btn')) {
+            showNotificationDetails(this);
+        }
+    });
 });
 
-function checkNewNotifications() {
-    // Simulate checking for new notifications
-    const newNotifications = document.querySelectorAll('.notification-tag.new');
-    
-    if (newNotifications.length > 0) {
-        console.log(`You have ${newNotifications.length} new notifications`);
+// Toast notification function
+function showToast(message, type = 'success') {
+    // Remove existing toast
+    const existingToast = document.querySelector('.toast-notification');
+    if (existingToast) {
+        existingToast.remove();
     }
+    
+    // Create new toast
+    const toast = document.createElement('div');
+    toast.className = `toast-notification ${type}`;
+    toast.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
+        <span>${message}</span>
+    `;
+    
+    // Add styles
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        z-index: 3000;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        animation: slideIn 0.3s ease;
+        font-family: 'Manrope', sans-serif;
+        max-width: 400px;
+    `;
+    
+    // Add keyframes
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    document.body.appendChild(toast);
+    
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            toast.remove();
+            style.remove();
+        }, 300);
+    }, 3000);
 }
+
+// Emergency contact functionality
+const emergencyBtn = document.querySelector('.emergency-btn');
+if (emergencyBtn) {
+    emergencyBtn.addEventListener('click', () => {
+        const confirmed = confirm('This will connect you to emergency services. Continue?');
+        if (confirmed) {
+            // In a real application, this would initiate an emergency call
+            showToast('Emergency services have been notified. Stay calm, help is on the way.', 'warning');
+            
+            // Simulate notification to emergency contacts
+            setTimeout(() => {
+                showToast('Your emergency contacts have been notified of the situation.');
+            }, 1500);
+        }
+    });
+}
+
+// Search functionality
+const searchBox = document.querySelector('.search-box input');
+if (searchBox) {
+    searchBox.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.notification-card');
+        
+        cards.forEach(card => {
+            const title = card.querySelector('.notification-title').textContent.toLowerCase();
+            const desc = card.querySelector('.notification-desc').textContent.toLowerCase();
+            const tag = card.querySelector('.notification-tag').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || desc.includes(searchTerm) || tag.includes(searchTerm)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+}
+
+// Initialize page when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('CardioAI Notifications page initialized');
+    
+    // Add any initialization code here
+    const unreadCount = document.querySelectorAll('.notification-card:not(.read-notification)').length;
+    if (unreadCount > 0 && notificationBadge) {
+        notificationBadge.textContent = unreadCount > 9 ? '9+' : unreadCount;
+    }
+    
+    // Initialize filter tabs
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const filterType = this.getAttribute('data-filter');
+            filterNotifications(filterType);
+        });
+    });
+});
 
 // Responsive adjustments
 window.addEventListener('resize', () => {
@@ -221,3 +276,21 @@ window.addEventListener('resize', () => {
         sidebarOverlay.classList.remove('active');
     }
 });
+
+// Export functions for use in HTML
+window.showNotificationDetail = function(type) {
+    // This function is defined in the HTML for simplicity
+    console.log('Showing notification detail for:', type);
+};
+
+window.closeNotificationDetail = function() {
+    console.log('Closing notification detail');
+};
+
+window.markAsRead = function() {
+    console.log('Marking as read');
+};
+
+window.takeAction = function() {
+    console.log('Taking action');
+};

@@ -249,21 +249,49 @@ body {
     box-shadow: 0 6px 20px rgba(0, 59, 133, 0.4);
 }
 
-/* Main Content */
-.main-content {
-    background: var(--light-gray);
-    padding: 20px;
-    overflow-y: auto;
+.sidebar {
+    background: rgba(170, 213, 42, 0.56);
+    border-right: 1px solid var(--medium-gray);
+    padding: 20px 0;
 }
 
-.content-header {
-    margin-bottom: 30px;
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.content-header h1 {
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 24px;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-item:hover {
+    background: rgba(0, 59, 133, 0.1);
     color: var(--primary-blue);
-    font-size: 30px;
-    font-weight: 700;
+}
+
+.sidebar-item.active {
+    background: rgba(45, 104, 175, 0.1);
+    color: var(--primary-blue);
+    border-left-color: var(--primary-blue);
+}
+
+.sidebar-item i {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sidebar-item span {
+    font-size: 14px;
+    font-weight: 500;
 }
 
 /* Profile Sections */

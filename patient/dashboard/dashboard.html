@@ -44,40 +44,42 @@
 
     <!-- Main Layout -->
     <div class="dashboard-layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <nav class="sidebar-nav">
-                <div class="nav-section">
-                    <div class="nav-title">Overview</div>
-                    <ul class="nav-menu">
-                        <li class="nav-item active" id="homeNav" data-page="dashboard.html">
-                            <i class="fas fa-home"></i>
-                            <span>Home</span>
-                        </li>
-                        <li class="nav-item" id="profileNav" data-page="/patient/profile/profile.html">
-                            <i class="fas fa-user"></i>
-                            <span>Profile</span>
-                        </li>
-                        <li class="nav-item" id="medicalRecordsNav" data-page="/patient\Medical Records\medicalrecords1.html">
-                            <i class="fas fa-file-medical"></i>
-                            <span>Medical Records</span>
-                        </li>
-                        <li class="nav-item" id="appointmentsNav" data-page="/patient\appointments\appiontment.html">
-                            <i class="fas fa-calendar-check"></i>
-                            <span>Appointments</span>
-                        </li>
-                        <li class="nav-item" id="medicationsNav" data-page="/patient\medications\medications.html">
-                            <i class="fas fa-pills"></i>
-                            <span>Medications</span>
-                        </li>
-                        <li class="nav-item" id="notificationsNav" data-page="/patient\notifications\notification.html">
-                            <i class="fas fa-bell"></i>
-                            <span>Notifications</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </aside>
+              <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-menu">
+                <a href="/patient/dashboard/dashboard.html" class="sidebar-item active">
+                    <i class="fas fa-home"></i>
+                    <span>dashboard</span>
+                </a>
+                
+                <a href="/patient/profile/profile.html" class="sidebar-item ">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                
+                <a href="/patient/Medical Records/medicalrecords1.html" class="sidebar-item">
+                    <i class="fas fa-file-medical"></i>
+                    <span>Medical Records</span>
+                </a>
+                
+                <a href="/patient/appointments/appiontment.html" class="sidebar-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Appointments</span>
+                </a>
+                
+                <a href="/patient/medications/medications.html" class="sidebar-item">
+                    <i class="fas fa-pills"></i>
+                    <span>Medications</span>
+                </a>
+                
+                <a href="/patient/notifications/notification.html" class="sidebar-item">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+                
+               
+            </div>
+        </div>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -150,12 +152,12 @@
                     <!-- Blood Sugar Card -->
                     <div class="stat-card" id="bloodSugarCard" data-page="blood-sugar-details.html">
                         <div class="stat-header">
-                            <h3>Blood Sugar</h3>
-                            <i class="fas fa-tint"></i>
+                            <h3>Oxygen saturation SpO2</h3>
+                            <i class="fas fa-lungs"></i>
                         </div>
                         <div class="stat-value">
                             <span class="value">95</span>
-                            <span class="unit">mg/dL</span>
+                            <span class="unit">%</span>
                         </div>
                         <div class="stat-trend">
                             <i class="fas fa-arrow-up"></i>
@@ -171,12 +173,12 @@
                     <!-- Weight Card -->
                     <div class="stat-card" id="weightCard" data-page="weight-details.html">
                         <div class="stat-header">
-                            <h3>Weight</h3>
-                            <i class="fas fa-weight"></i>
+                            <h3>Body Temperature</h3>
+                            <i class="fas fa-temperature-high"></i>
                         </div>
                         <div class="stat-value">
-                            <span class="value">155</span>
-                            <span class="unit">lbs</span>
+                            <span class="value">37</span>
+                            <span class="unit">C</span>
                         </div>
                         <div class="stat-trend">
                             <i class="fas fa-minus"></i>
@@ -211,14 +213,14 @@
             </div>
             
             <div class="quick-links-container">
-                <span class="quick-links-label">Quick Links:</span>
+                
                 <div class="links">
-                    <a href="/startpage/home.html" class="footer-link">Home</a>
-                    <span class="separator">|</span>
-                    <a href="/startpage/home.html" class="footer-link">Features</a>
-                    <span class="separator">|</span>
-                    <a href="/startpage/home.html" class="footer-link">About</a>
-                    <span class="separator">|</span>
+                    <a href="/startpage/home.html" class="footer-link">Home</a><br>
+                    
+                    <a href="/startpage/home.html" class="footer-link">Features</a><br>
+                    
+                    <a href="/startpage/home.html" class="footer-link">About</a><br>
+                   
                     <a href="/chatbot/mainpage.html" class="footer-link">Chatbot</a>
                 </div>
             </div>

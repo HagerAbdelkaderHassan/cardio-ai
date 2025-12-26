@@ -1,68 +1,190 @@
-// sign up
-
-
-// انتظر حتى يتم تحميل الصفحة
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     
-    // 1. جعل Checkbox قابلة للضغط
+    // 1. Checkbox functionality
     const checkbox = document.getElementById('checkbox');
+    const privacyLink = document.getElementById('privacyLink');
+    const completeBtn = document.getElementById('completeBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    
+    // Toggle checkbox state
+    function toggleCheckbox() {
+        checkbox.classList.toggle('checked');
+        checkFormCompletion();
+    }
+    
+    // Add event listeners for checkbox
     if (checkbox) {
-        checkbox.style.cursor = 'pointer';
-        checkbox.addEventListener('click', function() {
-            if (this.style.background === 'rgb(119, 159, 0)' || 
-                this.style.backgroundColor === '#779f00') {
-                this.style.background = '#ffffff';
-                this.style.borderColor = '#565e6c';
-            } else {
-                this.style.background = '#779f00';
-                this.style.borderColor = '#779f00';
+        checkbox.addEventListener('click', toggleCheckbox);
+    }
+    
+    // Add event listener for privacy link
+    if (privacyLink) {
+        privacyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleCheckbox();
+        });
+        privacyLink.style.cursor = 'pointer';
+    }
+    
+    // 2. Form validation and button state management
+    const formInputs = [
+        document.getElementById('fullName'),
+        document.getElementById('nationalId'),
+        document.getElementById('dateOfBirth'),
+        document.getElementById('gender'),
+        document.getElementById('phoneNumber'),
+        document.getElementById('email'),
+        document.getElementById('password'),
+        document.getElementById('confirmPassword')
+    ];
+    
+    // Check if all form fields are filled and valid
+    function checkFormCompletion() {
+        let allFilled = true;
+        
+        // Check all required fields
+        formInputs.forEach(input => {
+            if (input && !input.value.trim()) {
+                allFilled = false;
             }
         });
+        
+        // Check password match
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        if (password !== confirmPassword || !password || !confirmPassword) {
+            allFilled = false;
+        }
+        
+        // Check checkbox
+        if (!checkbox || !checkbox.classList.contains('checked')) {
+            allFilled = false;
+        }
+        
+        // Check email format
+        const email = document.getElementById('email').value;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email && !emailPattern.test(email)) {
+            allFilled = false;
+        }
+        
+        // Update button state
+        if (completeBtn) {
+            if (allFilled) {
+                completeBtn.classList.add('active');
+                completeBtn.style.cursor = 'pointer';
+            } else {
+                completeBtn.classList.remove('active');
+                completeBtn.style.cursor = 'not-allowed';
+            }
+        }
+        
+        return allFilled;
     }
     
-    // 2. زر Complete my account
-    const completeBtn = document.getElementById('completeBtn');
-    if (completeBtn) {
-        completeBtn.style.opacity = '1';
-        completeBtn.style.cursor = 'pointer';
-        completeBtn.addEventListener('click', function() {
-            // الانتقال لصفحة complete-account.html
-            window.location.href = 'complete.html';
+    // Add event listeners to all form inputs
+    formInputs.forEach(input => {
+        if (input) {
+            input.addEventListener('input', checkFormCompletion);
+            input.addEventListener('change', checkFormCompletion);
+            
+            // Add focus effects
+            input.addEventListener('focus', function() {
+                if (this.parentElement && this.parentElement.classList.contains('sign-up__textfield')) {
+                    this.parentElement.style.borderColor = '#779f00';
+                }
+            });
+            
+            input.addEventListener('blur', function() {
+                if (this.parentElement && this.parentElement.classList.contains('sign-up__textfield')) {
+                    this.parentElement.style.borderColor = '#dee1e6';
+                }
+            });
+        }
+    });
+    
+    // Special handling for date input
+    const dateInput = document.getElementById('dateOfBirth');
+    if (dateInput) {
+        dateInput.addEventListener('change', function() {
+            checkFormCompletion();
         });
     }
     
-    // 3. زر Log in
-    const loginBtn = document.getElementById('loginBtn');
-    if (loginBtn) {
-        loginBtn.style.cursor = 'pointer';
-        loginBtn.addEventListener('click', function() {
-            // الانتقال لصفحة login.html
+    // 3. Complete account button click handler
+    if (completeBtn) {
+        completeBtn.addEventListener('click', function() {
+            if (!checkFormCompletion()) {
+                alert('Please fill all required fields correctly before submitting.');
+                return;
+            }
+            
+            // Validate email format
+            const email = document.getElementById('email').value;
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                document.getElementById('email').parentElement.style.borderColor = 'red';
+                return;
+            }
+            
+            // Validate password match
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                document.getElementById('password').parentElement.style.borderColor = 'red';
+                document.getElementById('confirmPassword').parentElement.style.borderColor = 'red';
+                return;
+            }
+            
+            // Validate checkbox
+            if (!checkbox.classList.contains('checked')) {
+                alert('Please agree to the Terms & Privacy Policy.');
+                checkbox.style.borderColor = 'red';
+                return;
+            }
+            
+            // All validations passed - redirect to login.html
             window.location.href = 'login.html';
         });
     }
     
-    // 4. رابط Privacy Policy
-    const privacyLink = document.getElementById('privacyLink');
-    if (privacyLink) {
-        privacyLink.style.cursor = 'pointer';
-        privacyLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            // الانتقال لصفحة privacy-policy.html
-            window.location.href = 'privacy-policy.html';
+    // 4. Login button functionality
+    if (loginBtn) {
+        loginBtn.addEventListener('click', function() {
+            window.location.href = 'login.html';
         });
     }
     
-    // 5. تعيين تاريخ اليوم تلقائياً
-    const dateInput = document.getElementById('dateOfBirth');
-    if (dateInput) {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = String(today.getMonth() + 1).padStart(2, '0');
-        const day = String(today.getDate()).padStart(2, '0');
-        dateInput.value = `${year}-${month}-${day}`;
+    // 5. Real-time password validation
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    
+    function validatePasswords() {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+        
+        if (password && confirmPassword) {
+            if (password !== confirmPassword) {
+                passwordInput.parentElement.style.borderColor = 'red';
+                confirmPasswordInput.parentElement.style.borderColor = 'red';
+            } else {
+                passwordInput.parentElement.style.borderColor = '#779f00';
+                confirmPasswordInput.parentElement.style.borderColor = '#779f00';
+            }
+        }
     }
+    
+    if (passwordInput && confirmPasswordInput) {
+        passwordInput.addEventListener('input', validatePasswords);
+        confirmPasswordInput.addEventListener('input', validatePasswords);
+    }
+    
+    // 6. Initialize form state
+    checkFormCompletion();
 });
-
 
 
 
