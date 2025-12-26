@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // All validations passed - redirect to login.html
-            window.location.href = 'login.html';
+            window.location.href = 'complete.html';
         });
     }
     

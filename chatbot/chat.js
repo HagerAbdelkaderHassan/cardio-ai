@@ -35,8 +35,6 @@ const elements = {
     settingsButton: document.getElementById('settingsButton'),
     
     // Main content elements
-    themeToggle: document.getElementById('themeToggle'),
-    languageToggle: document.getElementById('languageToggle'),
     exitButton: document.getElementById('exitButton'),
     
     // Chat area elements
@@ -57,6 +55,7 @@ const elements = {
     cameraModal: document.getElementById('cameraModal'),
     audioModal: document.getElementById('audioModal'),
     settingsModal: document.getElementById('settingsModal'),
+    profileSettingsModal: document.getElementById('profileSettingsModal'),
     
     // Upload modal elements
     closeUpload: document.getElementById('closeUpload'),
@@ -94,6 +93,12 @@ const elements = {
     soundToggle: document.getElementById('soundToggle'),
     notificationsToggle: document.getElementById('notificationsToggle'),
     
+    // Profile Settings modal elements
+    closeProfileSettings: document.getElementById('closeProfileSettings'),
+    profileDarkModeToggle: document.getElementById('profileDarkModeToggle'),
+    profileSettingsCancel: document.getElementById('profileSettingsCancel'),
+    profileSettingsSave: document.getElementById('profileSettingsSave'),
+    
     // Hidden inputs
     hiddenImageInput: document.getElementById('hiddenImageInput'),
     hiddenFileInput: document.getElementById('hiddenFileInput'),
@@ -117,8 +122,11 @@ const texts = {
         chooseFile: "Choose file from device",
         takePhoto: "Take photo",
         settingsTitle: "Settings",
+        profileSettingsTitle: "Profile Settings",
         darkModeLabel: "Dark Mode",
+        profileDarkModeLabel: "Dark Mode",
         languageLabel: "Language",
+        profileLanguageLabel: "Language",
         messagePlaceholder: "What can I help you today?",
         send: "Send",
         fileUploaded: "File uploaded",
@@ -129,7 +137,9 @@ const texts = {
         noMicrophone: "Microphone not available",
         confirmExit: "Do you want to exit?",
         confirmDelete: "Are you sure you want to delete this chat?",
-        emptyChat: "Start a conversation with CardioAI"
+        emptyChat: "Start a conversation with CardioAI",
+        cancel: "Cancel",
+        save: "Save"
     },
     ar: {
         welcome: "كيف يمكنني مساعدتك اليوم؟",
@@ -142,8 +152,11 @@ const texts = {
         chooseFile: "اختر ملف من الجهاز",
         takePhoto: "التقاط صورة",
         settingsTitle: "الإعدادات",
+        profileSettingsTitle: "إعدادات الملف الشخصي",
         darkModeLabel: "الوضع الداكن",
+        profileDarkModeLabel: "الوضع الداكن",
         languageLabel: "اللغة",
+        profileLanguageLabel: "اللغة",
         messagePlaceholder: "كيف يمكنني مساعدتك اليوم؟",
         send: "إرسال",
         fileUploaded: "تم رفع الملف",
@@ -154,7 +167,9 @@ const texts = {
         noMicrophone: "الميكروفون غير متاح",
         confirmExit: "هل تريد الخروج؟",
         confirmDelete: "هل أنت متأكد من حذف هذه المحادثة؟",
-        emptyChat: "ابدأ محادثة مع CardioAI"
+        emptyChat: "ابدأ محادثة مع CardioAI",
+        cancel: "إلغاء",
+        save: "حفظ"
     }
 };
 
@@ -171,6 +186,8 @@ function initApp() {
     
     if (savedDarkMode) {
         toggleDarkMode(true);
+        elements.darkModeToggle.checked = true;
+        elements.profileDarkModeToggle.checked = true;
     }
     
     if (savedLanguage !== 'en') {
@@ -342,6 +359,26 @@ function updateUIByLanguage() {
         elements.messageInput.placeholder = t.messagePlaceholder;
     }
     
+    if (elements.profileSettingsTitle) {
+        elements.profileSettingsTitle.textContent = t.profileSettingsTitle;
+    }
+    
+    if (elements.profileDarkModeLabel) {
+        elements.profileDarkModeLabel.textContent = t.profileDarkModeLabel;
+    }
+    
+    if (elements.profileLanguageLabel) {
+        elements.profileLanguageLabel.textContent = t.profileLanguageLabel;
+    }
+    
+    if (elements.profileSettingsCancel) {
+        elements.profileSettingsCancel.textContent = t.cancel;
+    }
+    
+    if (elements.profileSettingsSave) {
+        elements.profileSettingsSave.textContent = t.save;
+    }
+    
     // Update text direction
     document.body.dir = state.currentLanguage === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = state.currentLanguage;
@@ -359,16 +396,12 @@ function attachEventListeners() {
     elements.menuButton.addEventListener('click', toggleSidebar);
     elements.newChatButton.addEventListener('click', createNewChat);
     elements.newChatFab.addEventListener('click', createNewChat);
-    elements.settingsButton.addEventListener('click', openSettings);
+    elements.settingsButton.addEventListener('click', openProfileSettings);
     
     // Search functionality
     elements.searchInput.addEventListener('input', filterChats);
     
     // Header controls
-    elements.themeToggle.addEventListener('click', toggleDarkMode);
-    elements.languageToggle.addEventListener('click', () => {
-        elements.settingsModal.classList.add('active');
-    });
     elements.exitButton.addEventListener('click', exitApp);
     
     // Message input
@@ -420,6 +453,14 @@ function attachEventListeners() {
     elements.darkModeToggle.addEventListener('change', () => toggleDarkMode(elements.darkModeToggle.checked));
     elements.languageSelect.addEventListener('change', changeLanguage);
     
+    // Profile Settings modal
+    elements.closeProfileSettings.addEventListener('click', closeProfileSettings);
+    elements.profileSettingsCancel.addEventListener('click', closeProfileSettings);
+    elements.profileSettingsSave.addEventListener('click', saveProfileSettings);
+    
+    // Language buttons in profile settings
+    document.addEventListener('click', handleProfileLanguageSelection);
+    
     // Suggestion buttons
     document.querySelectorAll('.suggestion-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -435,6 +476,7 @@ function attachEventListeners() {
         if (e.target === elements.cameraModal) closeCameraModal();
         if (e.target === elements.audioModal) closeAudioModal();
         if (e.target === elements.settingsModal) closeSettings();
+        if (e.target === elements.profileSettingsModal) closeProfileSettings();
     });
     
     // Prevent drag and drop default behavior
@@ -1240,6 +1282,84 @@ function startVoiceRecording() {
         });
 }
 
+// Open Profile Settings
+function openProfileSettings() {
+    elements.profileSettingsModal.classList.add('active');
+    
+    // Set current values
+    elements.profileDarkModeToggle.checked = state.darkMode;
+    
+    // Set active language button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        if (btn.dataset.lang === state.currentLanguage) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Update modal text based on current language
+    const t = texts[state.currentLanguage];
+    if (elements.profileSettingsTitle) {
+        elements.profileSettingsTitle.textContent = t.profileSettingsTitle;
+    }
+    if (elements.profileDarkModeLabel) {
+        elements.profileDarkModeLabel.textContent = t.profileDarkModeLabel;
+    }
+    if (elements.profileLanguageLabel) {
+        elements.profileLanguageLabel.textContent = t.profileLanguageLabel;
+    }
+    if (elements.profileSettingsCancel) {
+        elements.profileSettingsCancel.textContent = t.cancel;
+    }
+    if (elements.profileSettingsSave) {
+        elements.profileSettingsSave.textContent = t.save;
+    }
+}
+
+// Close Profile Settings
+function closeProfileSettings() {
+    elements.profileSettingsModal.classList.remove('active');
+}
+
+// Handle Language Selection in Profile Settings
+function handleProfileLanguageSelection(e) {
+    if (e.target.classList.contains('lang-btn')) {
+        // Remove active class from all buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Add active class to clicked button
+        e.target.classList.add('active');
+    }
+}
+
+// Save Profile Settings
+function saveProfileSettings() {
+    // Get selected language
+    const activeLangBtn = document.querySelector('.lang-btn.active');
+    const selectedLanguage = activeLangBtn ? activeLangBtn.dataset.lang : state.currentLanguage;
+    
+    // Get dark mode state
+    const darkModeEnabled = elements.profileDarkModeToggle.checked;
+    
+    // Apply changes
+    if (selectedLanguage !== state.currentLanguage) {
+        state.currentLanguage = selectedLanguage;
+        elements.languageSelect.value = selectedLanguage;
+        localStorage.setItem('language', selectedLanguage);
+        updateUIByLanguage();
+    }
+    
+    if (darkModeEnabled !== state.darkMode) {
+        toggleDarkMode(darkModeEnabled);
+    }
+    
+    // Close modal
+    closeProfileSettings();
+}
+
 // Open Settings
 function openSettings() {
     elements.settingsModal.classList.add('active');
@@ -1260,12 +1380,12 @@ function toggleDarkMode(forceState = null) {
     
     if (state.darkMode) {
         document.body.classList.add('dark-mode');
-        elements.themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         elements.darkModeToggle.checked = true;
+        elements.profileDarkModeToggle.checked = true;
     } else {
         document.body.classList.remove('dark-mode');
-        elements.themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         elements.darkModeToggle.checked = false;
+        elements.profileDarkModeToggle.checked = false;
     }
     
     // Save to localStorage

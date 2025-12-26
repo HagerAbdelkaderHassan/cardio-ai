@@ -461,32 +461,6 @@ body.dark-mode {
     gap: 15px;
 }
 
-.theme-toggle, .language-toggle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    background-color: rgba(0, 59, 133, 0.1);
-    transition: all 0.2s;
-}
-
-.theme-toggle:hover, .language-toggle:hover {
-    background-color: rgba(0, 59, 133, 0.2);
-    transform: scale(1.05);
-}
-
-.dark-mode .theme-toggle, .dark-mode .language-toggle {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .theme-toggle:hover, .dark-mode .language-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* تعديل زر Exit ليكون Back */
 .exit-button {
     background: #004b92;
     border-radius: 6px;
@@ -919,7 +893,8 @@ body.dark-mode {
 .upload-modal,
 .camera-modal,
 .audio-modal,
-.settings-modal {
+.settings-modal,
+.profile-settings-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -938,7 +913,8 @@ body.dark-mode {
 .upload-modal.active,
 .camera-modal.active,
 .audio-modal.active,
-.settings-modal.active {
+.settings-modal.active,
+.profile-settings-modal.active {
     opacity: 1;
     visibility: visible;
 }
@@ -946,7 +922,8 @@ body.dark-mode {
 .upload-content,
 .camera-content,
 .audio-content,
-.settings-content {
+.settings-content,
+.profile-settings-content {
     background-color: var(--white);
     border-radius: 16px;
     padding: 25px;
@@ -962,21 +939,24 @@ body.dark-mode {
 .dark-mode .upload-content,
 .dark-mode .camera-content,
 .dark-mode .audio-content,
-.dark-mode .settings-content {
+.dark-mode .settings-content,
+.dark-mode .profile-settings-content {
     background-color: #2d2d2d;
 }
 
 .upload-modal.active .upload-content,
 .camera-modal.active .camera-content,
 .audio-modal.active .audio-content,
-.settings-modal.active .settings-content {
+.settings-modal.active .settings-content,
+.profile-settings-modal.active .profile-settings-content {
     transform: translateY(0);
 }
 
 .upload-header,
 .camera-header,
 .audio-header,
-.settings-header {
+.settings-header,
+.profile-settings-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -988,14 +968,16 @@ body.dark-mode {
 .dark-mode .upload-header,
 .dark-mode .camera-header,
 .dark-mode .audio-header,
-.dark-mode .settings-header {
+.dark-mode .settings-header,
+.dark-mode .profile-settings-header {
     border-color: #444;
 }
 
 .upload-title,
 .camera-title,
 .audio-title,
-.settings-title {
+.settings-title,
+.profile-settings-title {
     font-size: 20px;
     font-weight: 600;
     color: #1e1e1e;
@@ -1004,14 +986,16 @@ body.dark-mode {
 .dark-mode .upload-title,
 .dark-mode .camera-title,
 .dark-mode .audio-title,
-.dark-mode .settings-title {
+.dark-mode .settings-title,
+.dark-mode .profile-settings-title {
     color: #e0e0e0;
 }
 
 .close-upload,
 .close-camera,
 .close-audio,
-.close-settings {
+.close-settings,
+.close-profile-settings {
     font-size: 28px;
     cursor: pointer;
     color: #757575;
@@ -1027,14 +1011,16 @@ body.dark-mode {
 .close-upload:hover,
 .close-camera:hover,
 .close-audio:hover,
-.close-settings:hover {
+.close-settings:hover,
+.close-profile-settings:hover {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
 .dark-mode .close-upload:hover,
 .dark-mode .close-camera:hover,
 .dark-mode .close-audio:hover,
-.dark-mode .close-settings:hover {
+.dark-mode .close-settings:hover,
+.dark-mode .close-profile-settings:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -1681,6 +1667,223 @@ input:checked + .toggle-slider:before {
     animation-delay: 0.4s;
 }
 
+/* Profile Settings Modal Styles */
+.profile-settings-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.profile-settings-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.profile-settings-content {
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 25px;
+    width: 400px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s;
+}
+
+.dark-mode .profile-settings-content {
+    background-color: #2d2d2d;
+}
+
+.profile-settings-modal.active .profile-settings-content {
+    transform: translateY(0);
+}
+
+.profile-settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dark-mode .profile-settings-header {
+    border-color: #444;
+}
+
+.profile-settings-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e1e1e;
+}
+
+.dark-mode .profile-settings-title {
+    color: #e0e0e0;
+}
+
+.close-profile-settings {
+    font-size: 28px;
+    cursor: pointer;
+    color: #757575;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+}
+
+.close-profile-settings:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark-mode .close-profile-settings:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-settings-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-setting-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.profile-setting-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    color: #1e1e1e;
+}
+
+.dark-mode .profile-setting-label {
+    color: #e0e0e0;
+}
+
+.profile-setting-label i {
+    font-size: 18px;
+    color: var(--primary-blue);
+    width: 24px;
+}
+
+.dark-mode .profile-setting-label i {
+    color: #87af12;
+}
+
+.profile-language-options {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-btn {
+    padding: 8px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--white);
+    color: #757575;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dark-mode .lang-btn {
+    background-color: #3d3d3d;
+    border-color: #444;
+    color: #aaa;
+}
+
+.lang-btn:hover {
+    background-color: rgba(0, 59, 133, 0.1);
+    color: var(--primary-blue);
+}
+
+.dark-mode .lang-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #87af12;
+}
+
+.lang-btn.active {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+.dark-mode .lang-btn.active {
+    background-color: #87af12;
+    border-color: #87af12;
+}
+
+.profile-settings-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.dark-mode .profile-settings-actions {
+    border-color: #444;
+}
+
+.profile-settings-cancel,
+.profile-settings-save {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.profile-settings-cancel {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.dark-mode .profile-settings-cancel {
+    background: #444;
+    color: #e0e0e0;
+}
+
+.profile-settings-cancel:hover {
+    background: #e0e0e0;
+}
+
+.dark-mode .profile-settings-cancel:hover {
+    background: #555;
+}
+
+.profile-settings-save {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.profile-settings-save:hover {
+    background: #004b92;
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
     .message-input-container {
@@ -1769,16 +1972,25 @@ input:checked + .toggle-slider:before {
     .message {
         max-width: 90%;
     }
+    
+    .profile-settings-content {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .profile-language-options {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .lang-btn {
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
     .header-controls {
         gap: 10px;
-    }
-    
-    .theme-toggle, .language-toggle {
-        width: 36px;
-        height: 36px;
     }
     
     .exit-button {

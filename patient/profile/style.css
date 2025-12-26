@@ -217,9 +217,6 @@ body {
     font-weight: 500;
 }
 
-
-
-
 /* Floating Chatbot Icon */
 .floating-chatbot {
     position: fixed;
@@ -249,49 +246,22 @@ body {
     box-shadow: 0 6px 20px rgba(0, 59, 133, 0.4);
 }
 
-.sidebar {
-    background: rgba(170, 213, 42, 0.56);
-    border-right: 1px solid var(--medium-gray);
-    padding: 20px 0;
+/* Main Content */
+.main-content {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 20px;
+    overflow-y: auto;
 }
 
-.sidebar-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.content-header {
+    margin-bottom: 30px;
 }
 
-.sidebar-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 12px 24px;
+.content-header h1 {
+    font-size: 32px;
+    font-weight: 600;
     color: var(--text-dark);
-    text-decoration: none;
-    transition: all 0.3s;
-    border-left: 3px solid transparent;
-}
-
-.sidebar-item:hover {
-    background: rgba(0, 59, 133, 0.1);
-    color: var(--primary-blue);
-}
-
-.sidebar-item.active {
-    background: rgba(45, 104, 175, 0.1);
-    color: var(--primary-blue);
-    border-left-color: var(--primary-blue);
-}
-
-.sidebar-item i {
-    width: 20px;
-    text-align: center;
-    font-size: 16px;
-}
-
-.sidebar-item span {
-    font-size: 14px;
-    font-weight: 500;
 }
 
 /* Profile Sections */
@@ -499,6 +469,7 @@ body {
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
+    min-height: 50px;
 }
 
 .tag {
@@ -510,39 +481,59 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
+    transition: all 0.3s ease;
+    cursor: default;
+    user-select: none;
+}
+
+.tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .remove-tag {
-    background: none;
+    background: rgba(255, 255, 255, 0.2);
     border: none;
     color: var(--white);
     cursor: pointer;
     font-size: 16px;
     line-height: 1;
     padding: 0;
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    margin-left: 2px;
+}
+
+.remove-tag:hover {
+    opacity: 1;
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.3);
 }
 
 .add-tag-btn {
     background: var(--light-gray);
     color: var(--dark-gray);
-    border: none;
-    padding: 4px 12px;
+    border: 1px dashed var(--medium-gray);
+    padding: 6px 12px;
     border-radius: 16px;
     font-size: 12px;
     display: flex;
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s;
+    height: 28px;
 }
 
 .add-tag-btn:hover {
-    background: var(--medium-gray);
+    background: var(--light-green);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
 }
 
 /* List Items */
@@ -550,45 +541,72 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    min-height: 50px;
 }
 
 .list-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 5px 0;
+    padding: 8px 0;
+    transition: all 0.3s ease;
+    cursor: default;
+    user-select: none;
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 8px;
+}
+
+.list-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+}
+
+.list-item:last-child {
+    border-bottom: none;
 }
 
 .list-item i {
     color: var(--primary-blue);
     font-size: 6px;
+    min-width: 10px;
 }
 
 .list-item span {
     flex: 1;
     color: var(--text-dark);
+    font-size: 14px;
 }
 
 .remove-item {
-    background: none;
+    background: rgba(222, 59, 64, 0.1);
     border: none;
     color: var(--error-red);
     cursor: pointer;
     font-size: 18px;
     line-height: 1;
     padding: 0;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+}
+
+.remove-item:hover {
+    opacity: 1;
+    transform: scale(1.2);
+    background: rgba(222, 59, 64, 0.2);
 }
 
 .add-item-btn {
     background: var(--light-gray);
     color: var(--dark-gray);
-    border: none;
-    padding: 8px 16px;
+    border: 1px dashed var(--medium-gray);
+    padding: 10px 16px;
     border-radius: 6px;
     font-size: 14px;
     display: flex;
@@ -597,10 +615,14 @@ body {
     cursor: pointer;
     transition: background 0.3s;
     margin-top: 10px;
+    width: 100%;
+    justify-content: center;
 }
 
 .add-item-btn:hover {
-    background: var(--medium-gray);
+    background: var(--light-green);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
 }
 
 /* Medical Actions */
@@ -753,13 +775,6 @@ input:checked + .slider:before {
     font-weight: 700;
 }
 
-.footer-links h3 {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-dark);
-    margin-bottom: 10px;
-}
-
 .links-menu {
     display: flex;
     gap: 30px;
@@ -823,6 +838,18 @@ input:checked + .slider:before {
     max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .modal-header {
@@ -851,6 +878,81 @@ input:checked + .slider:before {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.modal .form-group {
+    padding: 0 24px 20px;
+}
+
+/* Modal input fields */
+.modal-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--white);
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.modal-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(0, 59, 133, 0.1);
+}
+
+.modal-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--white);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    box-sizing: border-box;
+}
+
+.modal-select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(0, 59, 133, 0.1);
+}
+
+/* Custom input in modal */
+.modal-custom-input {
+    margin-top: 10px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--medium-gray);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--white);
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.modal-custom-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 2px rgba(0, 59, 133, 0.1);
+}
+
+.modal .form-actions {
+    padding: 20px 24px;
+    margin-top: 0;
+    border-top: 1px solid var(--light-gray);
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }
 
 /* Message Styles */
@@ -899,6 +1001,10 @@ input:checked + .slider:before {
     
     .profile-page {
         grid-template-columns: 1fr;
+    }
+    
+    .main-content {
+        grid-column: 1;
     }
 }
 
@@ -959,5 +1065,39 @@ input:checked + .slider:before {
     .chatbot-logo {
         width: 60px;
         height: 60px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-section {
+        padding: 15px;
+    }
+    
+    .section-header h2 {
+        font-size: 20px;
+    }
+    
+    .form-group input,
+    .form-group select {
+        padding: 8px 35px 8px 10px;
+        font-size: 13px;
+    }
+    
+    .edit-field-btn {
+        top: 30px;
+        right: 8px;
+    }
+    
+    .tag, .add-tag-btn {
+        font-size: 11px;
+    }
+    
+    .list-item span {
+        font-size: 13px;
     }
 }

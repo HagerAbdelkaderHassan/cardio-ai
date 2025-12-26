@@ -6,27 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a, button, input, select, h1, h2, h3, h4, h5, * {
-            text-decoration: none;
-            background: none;
-            border: none;
-            font-family: inherit;
-        }
-
-        menu, ol, ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
     <title>Profile - Cardio AI</title>
 </head>
 <body>
@@ -55,7 +34,7 @@
                     <i class="fas fa-cog"></i>
                 </button>
                 
-                <!-- Profile Avatar with Click to Upload -->
+                <!-- Profile Avatar -->
                 <div class="profile-avatar-container" id="profileAvatarContainer">
                     <div class="profile-avatar" id="profileAvatar">
                         <img src="default-avatar.png" alt="Profile" id="avatarImage">
@@ -101,8 +80,6 @@
                     <i class="fas fa-bell"></i>
                     <span>Notifications</span>
                 </a>
-                
-               
             </div>
         </div>
 
@@ -241,7 +218,7 @@
                                     <span>Type 2 Diabetes</span>
                                     <button type="button" class="remove-tag">&times;</button>
                                 </div>
-                                <button type="button" class="add-tag-btn" data-category="chronicDiseases">
+                                <button type="button" class="add-tag-btn" data-category="chronicDiseases" data-type="disease">
                                     <i class="fas fa-plus"></i> Add
                                 </button>
                             </div>
@@ -258,7 +235,7 @@
                                     <span>Dust Mites</span>
                                     <button type="button" class="remove-tag">&times;</button>
                                 </div>
-                                <button type="button" class="add-tag-btn" data-category="allergies">
+                                <button type="button" class="add-tag-btn" data-category="allergies" data-type="allergy">
                                     <i class="fas fa-plus"></i> Add
                                 </button>
                             </div>
@@ -279,7 +256,7 @@
                                     <span>Cataract Surgery (2022)</span>
                                     <button type="button" class="remove-item">&times;</button>
                                 </div>
-                                <button type="button" class="add-item-btn" data-category="surgeries">
+                                <button type="button" class="add-item-btn" data-category="surgeries" data-type="surgery">
                                     <i class="fas fa-plus"></i> Add Surgery
                                 </button>
                             </div>
@@ -298,7 +275,7 @@
                                     <span>Metformin 500mg (twice daily)</span>
                                     <button type="button" class="remove-item">&times;</button>
                                 </div>
-                                <button type="button" class="add-item-btn" data-category="medications">
+                                <button type="button" class="add-item-btn" data-category="medications" data-type="medication">
                                     <i class="fas fa-plus"></i> Add Medication
                                 </button>
                             </div>
@@ -362,7 +339,6 @@
                 </div>
                 
                 <div class="footer-links">
-                    
                     <div class="links-menu">
                         <a href="/startpage/home.html">Home</a>
                         <a href="/startpage/home.html">Features</a>
@@ -394,17 +370,19 @@
                 </div>
                 <form id="addItemForm">
                     <div class="form-group">
-                        <label for="itemName">Item Name</label>
-                        <input type="text" id="itemName" placeholder="Enter item name" required>
+                        <label for="modalItemName">Item Name</label>
+                        <div id="modalInputContainer">
+                            <!-- سيتم إضافة الحقل المناسب هنا ديناميكيًا -->
+                        </div>
                     </div>
-                    <div class="form-group" id="additionalFieldContainer" style="display: none;">
-                        <label for="additionalInfo">Additional Information</label>
-                        <input type="text" id="additionalInfo" placeholder="e.g., Year or Dosage">
+                    <div class="form-group" id="modalAdditionalFieldContainer" style="display: none;">
+                        <label for="modalAdditionalInfo">Additional Information</label>
+                        <input type="text" id="modalAdditionalInfo" placeholder="e.g., Year or Dosage">
                     </div>
-                    <input type="hidden" id="itemCategory">
+                    <input type="hidden" id="modalItemCategory">
                     <div class="form-actions">
                         <button type="button" class="cancel-btn" id="cancelAddBtn">Cancel</button>
-                        <button type="submit" class="save-btn">Add Item</button>
+                        <button type="submit" class="save-btn" id="submitAddBtn">Add Item</button>
                     </div>
                 </form>
             </div>

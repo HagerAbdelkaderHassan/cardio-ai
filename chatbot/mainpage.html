@@ -80,17 +80,10 @@
                     <span class="title-sub">AI Assistant</span>
                 </div>
                 <div class="header-controls">
-                    <div class="theme-toggle" id="themeToggle" title="Dark/Light Mode">
-                        <i class="fas fa-moon"></i>
-                    </div>
-                    <div class="language-toggle" id="languageToggle" title="Change Language">
-                        <i class="fas fa-language"></i>
-                    </div>
-                      <div class="exit-button" id="exitButton">
+                    <div class="exit-button" id="exitButton">
                         <i class="fas fa-arrow-left"></i>
-                         <span>Back</span>
-                      </div>
-
+                        <span>Back</span>
+                    </div>
                 </div>
             </div>
 
@@ -288,6 +281,47 @@
                         <input type="checkbox" id="notificationsToggle">
                         <span class="toggle-slider"></span>
                     </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Settings Modal (الجديدة) -->
+    <div class="profile-settings-modal" id="profileSettingsModal">
+        <div class="profile-settings-content">
+            <div class="profile-settings-header">
+                <div class="profile-settings-title" id="profileSettingsTitle">Profile Settings</div>
+                <div class="close-profile-settings" id="closeProfileSettings">&times;</div>
+            </div>
+            <div class="profile-settings-body">
+                <!-- Theme Toggle -->
+                <div class="profile-setting-option">
+                    <div class="profile-setting-label">
+                        <i class="fas fa-moon"></i>
+                        <span id="profileDarkModeLabel">Dark Mode</span>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="profileDarkModeToggle">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <!-- Language Selection -->
+                <div class="profile-setting-option">
+                    <div class="profile-setting-label">
+                        <i class="fas fa-language"></i>
+                        <span id="profileLanguageLabel">Language</span>
+                    </div>
+                    <div class="profile-language-options">
+                        <button class="lang-btn active" data-lang="en">English</button>
+                        <button class="lang-btn" data-lang="ar">العربية</button>
+                    </div>
+                </div>
+                
+                <!-- Apply/Cancel Buttons -->
+                <div class="profile-settings-actions">
+                    <button class="profile-settings-cancel" id="profileSettingsCancel">Cancel</button>
+                    <button class="profile-settings-save" id="profileSettingsSave">Save</button>
                 </div>
             </div>
         </div>
