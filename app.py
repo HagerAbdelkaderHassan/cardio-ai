@@ -102,3 +102,4 @@ try:
         st.write("No probability data available yet.")
 except FileNotFoundError:
     st.write("No predictions logged yet.")
+

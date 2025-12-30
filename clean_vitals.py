@@ -1,4 +1,4 @@
-import pandas as pd
+ 
 
 df = pd.read_csv('vital-signs-and-flowsheet-data (1).csv')
 print(df.head())
