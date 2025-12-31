@@ -1,365 +1,836 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./vars.css" />
-    <link rel="stylesheet" href="./style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - CardioAI</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@400;500;600&family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-      a,
-      button,
-      input,
-      select,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        border: none;
-        text-decoration: none;
-        background: none;
+        /* ==================== CSS VARIABLES ==================== */
+        :root {
+            --primary-blue: #003785;
+            --primary-green: #87af12;
+            --light-green: #779f00;
+            --danger-red: #de3b40;
+            --teal: #1c8a8e;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --bg-light: #e8f0f8;
+            --bg-sidebar: rgba(178, 215, 66, 0.56);
+            --bg-ai-section: #f2f6fd;
+            --shadow-sm: 0px 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0px 4px 6px rgba(0, 0, 0, 0.05);
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
 
-        -webkit-font-smoothing: antialiased;
-      }
+        /* ==================== RESET & LAYOUT ==================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-      menu,
-      ol,
-      ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            height: 100vh;
+            overflow: hidden; /* يمنع سكرول الصفحة بالكامل */
+            display: flex;
+        }
+
+        /* ==================== SIDEBAR ==================== */
+        .sidebar {
+            width: 270px;
+            background: var(--bg-sidebar);
+            height: 100%;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 16px;
+            overflow-y: auto;
+            border-right: 1px solid rgba(0,0,0,0.05);
+            z-index: 20;
+        }
+
+        .sidebar-logo {
+            margin-bottom: 40px;
+            padding-left: 10px;
+        }
+        
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateX(4px);
+        }
+
+        .nav-item.active {
+            background: rgba(0, 55, 133, 0.1);
+            color: var(--primary-blue);
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .ai-promo {
+            margin-top: auto;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px dashed #ccc;
+        }
+
+        /* ==================== MAIN CONTENT LAYOUT (FIXED HEADER/FOOTER) ==================== */
+        .main-content {
+            flex-grow: 1;
+            height: 100vh;
+            background-color: var(--bg-light);
+            display: flex;
+            flex-direction: column; /* ترتيب العناصر عمودياً */
+            overflow: hidden; /* منع السكرول للحاوية الرئيسية */
+        }
+
+        /* 1. Header Fixed Area */
+        header {
+            flex-shrink: 0; /* منع تقلص الهيدر */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 24px 32px; /* مسافة داخلية للهيدر */
+            background-color: var(--bg-light);
+            z-index: 10;
+            border-bottom: 1px solid rgba(0,0,0,0.05); /* خط فاصل خفيف اختياري */
+        }
+
+        /* 2. Scrollable Middle Area */
+        .scrollable-content {
+            flex-grow: 1; /* يأخذ المساحة المتبقية */
+            overflow-y: auto; /* السكرول هنا فقط */
+            padding: 0 32px 24px 32px; /* مسافات للمحتوى */
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* 3. Footer Fixed Area */
+        footer {
+            flex-shrink: 0; /* منع تقلص الفوتر */
+            padding: 16px 32px;
+            background-color: var(--bg-light); /* نفس الخلفية أو أبيض */
+            border-top: 1px solid rgba(0,0,0,0.05); /* خط فاصل علوي */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        /* --- Header Styles --- */
+        .header-text h1 {
+            color: var(--primary-blue);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .header-text p {
+            color: var(--gray-500);
+            font-size: 16px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .search-bar {
+            background: var(--white);
+            border: 1px solid var(--gray-300);
+            border-radius: var(--radius-md);
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 350px;
+            max-width: 100%;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+            background: transparent;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #002a66;
+        }
+
+        /* ==================== STATS GRID ==================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            color: var(--gray-500);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+        }
+
+        .stat-sub {
+            font-size: 13px;
+            color: var(--gray-500);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--gray-100);
+            border-radius: 4px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--light-green);
+            width: 94%;
+        }
+
+        /* ==================== MIDDLE SECTION (Grid) ==================== */
+        .middle-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .middle-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 18px;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .view-all-btn {
+            background: transparent;
+            border: 1px solid var(--gray-200);
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+        .view-all-btn:hover { background: var(--gray-50); border-color: var(--primary-blue); }
+
+        /* Appointment Items */
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            margin-bottom: 12px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .list-item:hover {
+            background: var(--gray-50);
+            border-color: var(--primary-blue);
+        }
+
+        .item-avatar {
+            width: 48px;
+            height: 48px;
+            background: #eee;
+            border-radius: 50%;
+            margin-right: 16px;
+            object-fit: cover;
+        }
+
+        .item-info { flex-grow: 1; }
+        .item-name { font-weight: 600; color: var(--gray-800); margin-bottom: 4px; }
+        .item-desc { font-size: 13px; color: var(--gray-500); }
+        .item-time { font-size: 12px; color: var(--gray-500); display: flex; align-items: center; gap: 4px; margin-top: 4px;}
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: white;
+            font-weight: 500;
+        }
+        .badge.new { background: var(--light-green); }
+        .badge.consult { background: var(--teal); }
+        .badge.high { background: var(--danger-red); }
+
+        /* ==================== BOTTOM SECTION ==================== */
+        .bottom-flex {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 10px; /* مسافة بسيطة قبل نهاية السكرول */
+        }
+
+        .quick-actions {
+            flex: 2;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            min-width: 300px;
+        }
+
+        .actions-container {
+            display: flex;
+            gap: 16px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .action-card {
+            flex: 1;
+            min-width: 140px;
+            background: var(--gray-50);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .action-card:hover { transform: translateY(-4px); background: #fff; border-color: var(--primary-blue); }
+        .action-card.blue { background: #eff6ff; border-color: #bfdbfe; }
+
+        .ai-alarm {
+            flex: 1;
+            background: var(--bg-ai-section);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            min-width: 300px;
+        }
+
+        .alarm-card {
+            background: white;
+            border: 1px solid var(--danger-red);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        /* Footer Links Styles */
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-links a { color: var(--gray-700); text-decoration: none; font-size: 14px; }
+        .footer-links a:hover { color: var(--primary-blue); }
+
+        /* ==================== FLOATING BUTTON ==================== */
+        .floating-chat {
+            position: fixed;
+            bottom: 80px; /* رفعته قليلاً ليكون فوق الفوتر الثابت */
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #0a66f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(10, 102, 240, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s;
+            border: none;
+        }
+        .floating-chat:hover { transform: scale(1.1); }
+        .floating-chat img { width: 30px; height: 30px; }
+
+        /* Modal Styles */
+        .cardio-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 2000;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .cardio-modal-content {
+            background: white; padding: 30px; border-radius: 12px;
+            max-width: 500px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Edits */
+        /* Chat Bot Icon */
+.chat-bot-icon {
+    position: fixed;
+    bottom: 80px;
+    right: 32px;
+    width: 60px;
+    height: 60px;
+    background: #003785;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 12px rgba(0, 55, 133, 0.3);
+    transition: all 0.3s;
+    z-index: 999;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.chat-bot-icon:hover {
+    background: #6b9137;
+    transform: scale(1.1);
+    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+#chatBotImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
     </style>
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="doctor-dashboard">
-      <div class="doctor-dashboard__container">
-        <img class="doctor-dashboard__line" src="line0.svg" />
-        <div class="doctor-dashboard__image">
-          <img class="doctor-dashboard__group" src="group0.svg" />
+</head>
+<body>
+
+   <!-- ==================== SIDEBAR ==================== -->
+    <nav class="sidebar">
+        <!-- رابط الصفحة الرئيسية (الداشبورد) -->
+        <div class="sidebar-logo" onclick="window.location.href='dashboard.html'">
+            <h2 style="color:var(--primary-blue); font-weight:800; font-family:'Poppins', sans-serif;">Cardio<span style="color:var(--primary-green)">AI</span></h2>
         </div>
-        <div class="doctor-dashboard__button">
-          <div class="doctor-dashboard__patient-search">Patient Search</div>
-          <div class="doctor-dashboard__search">
-            <img class="doctor-dashboard__group2" src="group1.svg" />
-          </div>
-        </div>
-        <div class="doctor-dashboard__button2">
-          <div class="doctor-dashboard__my-patients">My Patients</div>
-          <div class="doctor-dashboard__users">
-            <img class="doctor-dashboard__group3" src="group2.svg" />
-          </div>
-        </div>
-        <div class="doctor-dashboard__button3">
-          <div class="doctor-dashboard__requests">Requests</div>
-          <div class="doctor-dashboard__file-text">
-            <img class="doctor-dashboard__group4" src="group3.svg" />
-          </div>
-        </div>
-        <div class="doctor-dashboard__button4">
-          <div class="doctor-dashboard__schedule">Schedule</div>
-          <div class="doctor-dashboard__calendar">
-            <img class="doctor-dashboard__group5" src="group4.svg" />
-          </div>
-        </div>
-        <div class="doctor-dashboard__house"></div>
-        <div class="doctor-dashboard__button5">
-          <div class="doctor-dashboard__patient-search2">Dashboard</div>
-          <div class="doctor-dashboard__home-3">
-            <img class="doctor-dashboard__group6" src="group5.svg" />
-          </div>
-        </div>
-        <div class="doctor-dashboard__bookings-and-payments">
-          <span>
-            <span class="bookings-and-payments-span">AI</span>
-            <span class="bookings-and-payments-span2">Chatbot</span>
-          </span>
-        </div>
-        <div class="doctor-dashboard__container-280">
-          <div class="doctor-dashboard__image-33">
-            <img class="doctor-dashboard__group7" src="group6.svg" />
-          </div>
-        </div>
-      </div>
-      <div class="doctor-dashboard__button6">
-        <div class="doctor-dashboard__text"></div>
-        <div class="doctor-dashboard__bot">
-          <img class="doctor-dashboard__group8" src="group7.svg" />
-        </div>
-      </div>
-      <div class="doctor-dashboard__container2">
-        <div class="doctor-dashboard__good-morning-dr-nada">
-          Good morning, Dr. Abeer
-        </div>
-        <div class="doctor-dashboard__you-have-8-appointments-today">
-          You have 8 appointments today
-        </div>
-        <div class="doctor-dashboard__button7">
-          <div class="doctor-dashboard__find-patient">
-            Search by name, email, or ID...
-          </div>
-          <div class="doctor-dashboard__search2">
-            <img class="doctor-dashboard__group9" src="group8.svg" />
-          </div>
-        </div>
-        <div class="doctor-dashboard__button8">
-          <div class="doctor-dashboard__new-appointment">New Appointment</div>
-          <div class="doctor-dashboard__plus">
-            <img class="doctor-dashboard__group10" src="group9.svg" />
-          </div>
-        </div>
-        <div class="doctor-dashboard__container3">
-          <div class="doctor-dashboard__today-s-appointments">
-            Today&#039;s Appointments
-          </div>
-          <div class="doctor-dashboard__calendar-days">
-            <img class="doctor-dashboard__group11" src="group10.svg" />
-          </div>
-          <div class="doctor-dashboard___8">8</div>
-          <div class="doctor-dashboard___3-completed-5-remaining">
-            3 completed • 5 remaining
-          </div>
-        </div>
-        <div class="doctor-dashboard__container4">
-          <div class="doctor-dashboard__pending-requests">Pending Requests</div>
-          <div class="doctor-dashboard__file-stack">
-            <img class="doctor-dashboard__group12" src="group11.svg" />
-          </div>
-          <div class="doctor-dashboard___12">12</div>
-          <div class="doctor-dashboard___3-urgent-9-routine">
-            3 urgent • 9 routine
-          </div>
-        </div>
-        <div class="doctor-dashboard__container5">
-          <div class="doctor-dashboard__total-patients">Total Patients</div>
-          <div class="doctor-dashboard__users-round">
-            <img class="doctor-dashboard__group13" src="group12.svg" />
-          </div>
-          <div class="doctor-dashboard___247">247</div>
-          <div class="doctor-dashboard__active-patient-roster">
-            Active patient roster
-          </div>
-        </div>
-        <div class="doctor-dashboard__container6">
-          <div class="doctor-dashboard__efficiency">Efficiency</div>
-          <div class="doctor-dashboard__trending-up">
-            <img class="doctor-dashboard__group14" src="group13.svg" />
-          </div>
-          <div class="doctor-dashboard___94">94%</div>
-          <div class="doctor-dashboard__on-time-appointments-this-week">
-            On-time appointments this week
-          </div>
-          <div class="doctor-dashboard__container7">
-            <div class="doctor-dashboard__rectangle"></div>
-          </div>
-        </div>
-        <div class="doctor-dashboard__container8">
-          <div class="doctor-dashboard__today-s-schedule">
-            Today&#039;s Schedule
-          </div>
-          <div class="doctor-dashboard__your-appointments-for-today">
-            Your appointments for today
-          </div>
-          <div class="doctor-dashboard__button9">
-            <div class="doctor-dashboard__view-all">View All</div>
-          </div>
-          <div class="doctor-dashboard__container9">
-            <div class="doctor-dashboard__sarah-johnson">Sarah Johnson</div>
-            <div class="doctor-dashboard__general-checkup">
-              General Checkup
-              <br />
-              <br />
+
+        <div class="nav-list">
+            <!-- 1. Dashboard (نفس الملف) -->
+            <div class="nav-item active" onclick="window.location.href='dashboard.html'">
+                <img src="Home 3.png" class="nav-icon" onerror="this.style.display='none'">
+                <span>Dashboard</span>
             </div>
-            <div class="doctor-dashboard__clock">
-              <img class="doctor-dashboard__group15" src="group14.svg" />
+            
+            <!-- 2. Patient Search (المسار النسبي المصحح) -->
+            <div class="nav-item" onclick="window.location.href='../patient-search/patient-search/patient-search.html'">
+                <img src="Search.png" class="nav-icon" onerror="this.style.display='none'">
+                <span>Patient Search</span>
             </div>
-            <div class="doctor-dashboard___10-30-am">10:30 AM</div>
-            <div class="doctor-dashboard__button10">
-              <div class="doctor-dashboard__new-patient">New Patient</div>
+            
+            <!-- 3. My Patients (المسار النسبي: ../my-patients/my-patients.html) -->
+            <div class="nav-item" onclick="window.location.href='../my-patients/my-patients.html'">
+                <img src="Users.png" class="nav-icon" onerror="this.style.display='none'">
+                <span>My Patients</span>
             </div>
-            <div class="doctor-dashboard__c-check-1">
-              <img class="doctor-dashboard__group16" src="group15.svg" />
+            
+            <!-- 4. Requests (المسار النسبي: ../my-requests/my-requests.html) -->
+            <div class="nav-item" onclick="window.location.href='../my-requests/my-requests.html'">
+                <img src="File text.png" class="nav-icon" onerror="this.style.display='none'">
+                <span>Requests</span>
             </div>
-            <div class="doctor-dashboard__avatar">
-              <img class="doctor-dashboard__rectangle2" src="rectangle1.png" />
+            
+            <!-- 5. Schedule (المسار النسبي: ../schedule/schedule.html) -->
+            <div class="nav-item" onclick="window.location.href='../schedule/schedule.html'">
+                <img src="Schedule.png" class="nav-icon" onerror="this.style.display='none'">
+                <span>Schedule</span>
             </div>
-          </div>
-          <div class="doctor-dashboard__container10">
-            <div class="doctor-dashboard__sarah-johnson">Sarah Johnson</div>
-            <div class="doctor-dashboard__diabetes-management">
-              Diabetes Management
-              <br />
-              <br />
-            </div>
-            <div class="doctor-dashboard__clock">
-              <img class="doctor-dashboard__group17" src="group16.svg" />
-            </div>
-            <div class="doctor-dashboard___11-00-am">11:00 AM</div>
-            <div class="doctor-dashboard__button11">
-              <div class="doctor-dashboard__consultation">Consultation</div>
-            </div>
-            <div class="doctor-dashboard__c-check-1">
-              <img class="doctor-dashboard__group18" src="group17.svg" />
-            </div>
-            <div class="doctor-dashboard__avatar">
-              <img class="doctor-dashboard__rectangle2" src="rectangle2.png" />
-            </div>
-          </div>
-          <div class="doctor-dashboard__container11">
-            <div class="doctor-dashboard__sarah-johnson">Sarah Johnson</div>
-            <div class="doctor-dashboard__hypertension">
-              Hypertension
-              <br />
-              <br />
-            </div>
-            <div class="doctor-dashboard__clock">
-              <img class="doctor-dashboard__group19" src="group18.svg" />
-            </div>
-            <div class="doctor-dashboard___09-00-am">09:00 AM</div>
-            <div class="doctor-dashboard__button12">
-              <div class="doctor-dashboard__follow-up">Follow-up</div>
-            </div>
-            <div class="doctor-dashboard__c-check-12">
-              <img class="doctor-dashboard__group20" src="group19.svg" />
-            </div>
-            <div class="doctor-dashboard__avatar">
-              <img class="doctor-dashboard__rectangle2" src="rectangle3.png" />
-            </div>
-          </div>
         </div>
-        <div class="doctor-dashboard__container12">
-          <div class="doctor-dashboard__pending-requests2">
-            Pending Requests
-          </div>
-          <div class="doctor-dashboard__items-requiring-your-attention">
-            Items requiring your attention
-          </div>
-          <div class="doctor-dashboard__button9">
-            <div class="doctor-dashboard__view-all">View All</div>
-          </div>
-          <div class="doctor-dashboard__container13">
-            <div class="doctor-dashboard__lisa-anderson">Lisa Anderson</div>
-            <div class="doctor-dashboard__tag">
-              <div class="doctor-dashboard__frame">
-                <div class="doctor-dashboard__high">high</div>
-              </div>
+
+        <!-- <div class="ai-promo" onclick="openChatbot()">
+            <img src="cardiochat.png" style="width:40px; height:40px; border-radius:50%;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4712/4712035.png'">
+            <div>
+                <span style="color:var(--primary-blue); font-weight:bold; display:block;">AI</span>
+                <span style="color:var(--primary-green); font-weight:bold;">Chatbot</span>
             </div>
-            <div class="doctor-dashboard__blood-work-results-require-review">
-              Blood work results require review
+        </div> -->
+    </nav>
+
+
+    <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+    <main class="main-content">
+        
+        <!-- HEADER (FIXED TOP) -->
+        <header>
+            <div class="header-text">
+                <h1>Good morning, Dr. Abeer</h1>
+                <p>You have 8 appointments today</p>
             </div>
-            <div class="doctor-dashboard___2-hours-ago">2 hours ago</div>
-            <div class="doctor-dashboard__arrow-right">
-              <img class="doctor-dashboard__group21" src="group20.svg" />
+            <div class="header-actions">
+                <div class="search-bar">
+                    <img src="Search (1).png" alt="" style="width:16px; opacity:0.5;">
+                    <input type="text" id="mainSearch" placeholder="Search by name, email, or ID...">
+                </div>
+                <button class="btn-primary" onclick="window.location.href='../schedule/add-schedule.html'">
+                    <span>+</span> New Appointment
+                </button>
             </div>
-          </div>
-        </div>
-        <div class="doctor-dashboard__button13">
-          <div class="doctor-dashboard__view-all">View All</div>
-        </div>
-      </div>
-      <div class="doctor-dashboard__container14">
-        <div class="doctor-dashboard__quick-actions">Quick Actions</div>
-        <div class="doctor-dashboard__common-tasks-and-shortcuts">
-          Common tasks and shortcuts
-        </div>
-        <div class="doctor-dashboard__container15">
-          <div class="doctor-dashboard__file-text2">
-            <img class="doctor-dashboard__group22" src="group21.svg" />
-          </div>
-          <div class="doctor-dashboard__patient-requests">Patient Requests</div>
-        </div>
-        <div class="doctor-dashboard__container16">
-          <div class="doctor-dashboard__search3">
-            <img class="doctor-dashboard__group23" src="group22.svg" />
-          </div>
-          <div class="doctor-dashboard__search-patients">Search Patients</div>
-        </div>
-        <div class="doctor-dashboard__container17">
-          <div class="doctor-dashboard__calendar-days2">
-            <img class="doctor-dashboard__group24" src="group23.svg" />
-          </div>
-          <div class="doctor-dashboard__manage-schedule">Manage Schedule</div>
-        </div>
-      </div>
-      <div class="doctor-dashboard__container18">
-        <div class="doctor-dashboard__today-s-schedule">
-          AI Alarm (prediction)
-        </div>
-        <div class="doctor-dashboard__your-appointments-for-today">
-          Your patient health today
-        </div>
-        <div class="doctor-dashboard__container19">
-          <div class="doctor-dashboard__sarah-johnson2">Sarah Johnson</div>
-          <div class="doctor-dashboard__c-check-1"></div>
-          <div class="doctor-dashboard__avatar2">
-            <img class="doctor-dashboard__rectangle3" src="rectangle4.png" />
-          </div>
-          <div class="doctor-dashboard__your-appointments-for-today2">
-            2 mis ago
-          </div>
-          <div class="doctor-dashboard__sarah-johnson3">High</div>
-          <div class="doctor-dashboard__your-appointments-for-today3">
-            There is a 60% chance of a heart attack within a month based on this
-            patient latest analysis
-          </div>
-          <div class="doctor-dashboard__button14">
-            <div class="doctor-dashboard__review">View patient profile</div>
-          </div>
-          <div class="doctor-dashboard__button15">
-            <div class="doctor-dashboard__review">Ask Chatbot</div>
-          </div>
-        </div>
-        <div class="doctor-dashboard__button16">
-          <div class="doctor-dashboard__view-all">View All</div>
-        </div>
-      </div>
-      <img
-        class="doctor-dashboard__whats-app-image-2025-11-18-at-23-07-13-b-7-c-86-a-7-c-2"
-        src="whats-app-image-2025-11-18-at-23-07-13-b-7-c-86-a-7-c-20.png"
-      />
-      <div class="doctor-dashboard__bookings-and-payments2">
-        <span>
-          <span class="bookings-and-payments-2-span">Cardio</span>
-          <span class="bookings-and-payments-2-span2">AI</span>
-        </span>
-      </div>
-      <div class="doctor-dashboard__frame-15">
-        <div class="doctor-dashboard__quick-links">Quick Links</div>
-        <div class="doctor-dashboard__header-menu">
-          <div class="doctor-dashboard__frame2">
-            <div class="doctor-dashboard__home">Home</div>
-          </div>
-          <div class="doctor-dashboard__frame3">
-            <div class="doctor-dashboard__features">Features</div>
-          </div>
-          <div class="doctor-dashboard__frame4">
-            <div class="doctor-dashboard__solutions">About</div>
-          </div>
-          <div class="doctor-dashboard__frame5">
-            <div class="doctor-dashboard__contact">Contact</div>
-          </div>
-        </div>
-        <img
-          class="doctor-dashboard__whats-app-image-2025-11-19-at-00-21-50-30-e-751-e-6-2"
-          src="whats-app-image-2025-11-19-at-00-21-50-30-e-751-e-6-20.png"
-        />
-        <div class="doctor-dashboard__cardio-ai">
-          <span>
-            <span class="cardio-ai-span">Cardio</span>
-            <span class="cardio-ai-span2">AI</span>
-          </span>
-        </div>
-        <div class="doctor-dashboard__button-109">
-          <div class="doctor-dashboard__log-out">Log out</div>
-        </div>
-      </div>
-    </div>
-  </body>
+        </header>
+
+        <!-- SCROLLABLE MIDDLE AREA -->
+        <div class="scrollable-content">
+            
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <!-- Card 1 -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span>Today's Appointments</span>
+                        <img src="calendar-days.png" width="20" alt="">
+                    </div>
+                    <div class="stat-value">8</div>
+                    <div class="stat-sub" style="color:var(--success-green)">3 completed • 5 remaining</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span>Pending Requests</span>
+                        <img src="file-stack.png" width="20" alt="">
+                    </div>
+                    <div class="stat-value">12</div>
+                    <div class="stat-sub" style="color:var(--danger-red)">3 urgent • 9 routine</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span>Total Patients</span>
+                        <img src="users-round.png" width="20" alt="">
+                    </div>
+                    <div class="stat-value">247</div>
+                    <div class="stat-sub">Active patient roster</div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span>Efficiency</span>
+                        <img src="trending-up.png" width="20" alt="">
+                    </div>
+                    <div class="stat-value" style="color:var(--light-green)">94%</div>
+                    <div class="stat-sub">On-time this week</div>
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                </div>
+            </section>
+
+            <!-- Middle Section (Schedule & Requests) -->
+            <section class="middle-grid">
+                <!-- Schedule Column -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <div>
+                            <h2>Today's Schedule</h2>
+                            <span style="font-size:13px; color:var(--gray-500)">Your appointments for today</span>
+                        </div>
+                        <button class="view-all-btn">View All</button>
+                    </div>
+
+                    <!-- Appointments -->
+                    <div class="list-item" data-patient="Hager Osama">
+                        <img src="Avatar.png" class="item-avatar" alt="User">
+                        <div class="item-info">
+                            <div class="item-name">Hager Osama</div>
+                            <div class="item-desc">General Checkup</div>
+                            <div class="item-time"><img src="clock.png" width="12"> 10:30 AM</div>
+                        </div>
+                        <span class="badge new">New Patient</span>
+                        <img src="C check 1.png" width="20" style="margin-left:10px;" class="check-btn">
+                    </div>
+                    <div class="list-item" data-patient="Hager Osama">
+                        <img src="Avatar.png" class="item-avatar" alt="User">
+                        <div class="item-info">
+                            <div class="item-name">Hager Osama</div>
+                            <div class="item-desc">Diabetes Management</div>
+                            <div class="item-time"><img src="clock.png" width="12"> 11:00 AM</div>
+                        </div>
+                        <span class="badge consult">Consultation</span>
+                        <img src="C check 1.png" width="20" style="margin-left:10px;" class="check-btn">
+                    </div>
+                    <div class="list-item" data-patient="Hager Osama">
+                        <img src="Avatar.png" class="item-avatar" alt="User">
+                        <div class="item-info">
+                            <div class="item-name">Hager Osama</div>
+                            <div class="item-desc">Hypertension</div>
+                            <div class="item-time"><img src="clock.png" width="12"> 09:00 AM</div>
+                        </div>
+                        <span class="badge new">Follow-up</span>
+                        <img src="C check 1.png" width="20" style="margin-left:10px;" class="check-btn">
+                    </div>
+                </div>
+
+                <!-- Pending Requests Column -->
+                <div class="section-card" style="height:fit-content;">
+                    <div class="section-header">
+                        <div>
+                            <h2>Pending Requests</h2>
+                            <span style="font-size:13px; color:var(--gray-500)">Items requiring attention</span>
+                        </div>
+                        <button class="view-all-btn">View All</button>
+                    </div>
+
+                    <!-- Request Item -->
+                    <div class="list-item request-item" style="border-left: 4px solid var(--danger-red);">
+                        <div class="item-info">
+                            <div style="display:flex; justify-content:space-between;">
+                                <div class="item-name">Lisa Anderson</div>
+                                <span class="badge high">High</span>
+                            </div>
+                            <div class="item-desc">Blood work results require review</div>
+                            <div class="item-time">2 hours ago</div>
+                        </div>
+                        <img src="arrow-right.png" width="16" style="margin-left:10px;">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Section (Quick Actions & AI Alarm) -->
+            <section class="bottom-flex">
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <p style="color:var(--gray-500); font-size:14px;">Common tasks and shortcuts</p>
+                    
+                    <div class="actions-container">
+                        <div class="action-card blue" onclick="window.location.href='../my-requests/my-requests.html'">
+                            <img src="Patient Requests.png" width="24" style="margin-bottom:8px;">
+                            <div style="color:var(--primary-blue); font-weight:600;">Patient Requests</div>
+                        </div>
+                        <div class="action-card" onclick="window.location.href='../patient-search/patient-search/patient-search.html'">
+                            <img src="Search Patients.png" width="24" style="margin-bottom:8px;">
+                            <div>Search Patients</div>
+                        </div>
+                        <div class="action-card" onclick="window.location.href='../schedule/schedule.html'">
+                            <img src="Manage Schedule.png" width="24" style="margin-bottom:8px;">
+                            <div>Manage Schedule</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Alarm -->
+                <div class="ai-alarm">
+                    <h2>AI Alarm (Prediction)</h2>
+                    <p style="color:var(--gray-500); font-size:14px;">Your patient health today</p>
+                    
+                    <div class="alarm-card">
+                        <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                            <img src="Sarah Johnson.png" style="width:32px; height:32px; border-radius:50%;" alt="">
+                            <div>
+                                <div style="font-weight:600;">Hager Osama</div>
+                                <div style="font-size:12px; color:var(--danger-red);">High Risk • 2 mins ago</div>
+                            </div>
+                        </div>
+                        <p style="font-size:13px; margin-bottom:15px;">There is a 60% chance of a heart attack within a month based on latest analysis.</p>
+                        <div style="display:flex; gap:10px;">
+                            <button onclick="window.location.href='../../cahtbot/mainpage.html'" class="view-all-btn" style="flex:1;">Ask Chatbot</button>
+                            <a href="../../patient/profile/profile.html">
+                            <button class="view-all-btn" style="flex:1; background:var(--primary-blue); color:white;">      
+                                View Profile
+                                </button>
+                                </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div> <!-- END SCROLLABLE CONTENT -->
+
+        <!-- FOOTER (FIXED BOTTOM) -->
+        <footer>
+            <div>
+                <h3 style="color:var(--primary-blue); margin-bottom:5px;">Cardio<span style="color:var(--primary-green)">AI</span></h3>
+                <span style="font-size:12px; color:var(--gray-500);">© 2025 CardioAI System</span>
+            </div>
+            <div class="footer-links">
+                <a href="#">Home</a>
+                <a href="#">Features</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+            <button style="background:var(--danger-red); color:white; border:none; padding:8px 16px; border-radius:6px; cursor:pointer;" onclick="confirmLogout()">Log out</button>
+        </footer>
+
+    </main>
+
+                <!-- Chat Bot Icon - صورة بدل الأيقونة -->
+            <div class="chat-bot-icon" id="chatBotBtn" onclick="window.location.href='../../cahtbot/mainpage.html'">
+                <!-- يمكنك استبدال chatbot.png بالصورة الخاصة بك -->
+                <img src="chatbot.png" alt="Chat Bot" id="chatBotImage">
+            </div>
+    <!-- Floating Chat Button -->
+    <!-- <button class="floating-chat" onclick="openChatbot()">
+        <img src="group7.svg" alt="Chat" onerror="this.src='https://cdn-icons-png.flaticon.com/512/4712/4712035.png'">
+    </button> -->
+
+    <!-- Scripts -->
+    <script>
+        // ======= Navigation & Interactivity =======
+
+        // 1. التعامل مع البحث
+        const searchInput = document.getElementById('mainSearch');
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.list-item');
+            items.forEach(item => {
+                const name = item.querySelector('.item-name')?.innerText.toLowerCase() || "";
+                item.style.display = name.includes(val) ? "flex" : "none";
+            });
+        });
+
+        // 2. فتح المودال
+        function openModal(contentHtml) {
+            const overlay = document.createElement('div');
+            overlay.className = 'cardio-modal-overlay';
+            overlay.innerHTML = `
+                <div class="cardio-modal-content">
+                    ${contentHtml}
+                    <button style="margin-top:20px; padding:8px 20px; border:none; background:#eee; border-radius:4px; cursor:pointer;" onclick="this.closest('.cardio-modal-overlay').remove()">Close</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        }
+
+        // 3. زر الشات بوت
+        function openChatbot() {
+            openModal(`
+                <h3>AI Assistant</h3>
+                <div style="height:200px; background:#f9f9f9; padding:10px; margin:10px 0; border-radius:8px; overflow-y:auto;">
+                    <p style="color:#003785;"><strong>AI:</strong> Hello Dr. Abeer, how can I assist you with your patients today?</p>
+                </div>
+                <input type="text" placeholder="Type a message..." style="width:100%; padding:10px; border:1px solid #ddd; border-radius:4px;">
+            `);
+        }
+
+        // 4. تسجيل الخروج
+        function confirmLogout() {
+            if(confirm("Are you sure you want to log out?")) {
+                alert("Logged out successfully");
+            }
+        }
+
+        // 5. التفاعل مع القائمة الجانبية
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 6. التفاعل مع الكروت
+        document.querySelectorAll('.list-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if(!e.target.classList.contains('check-btn')) {
+                    const patientName = item.querySelector('.item-name').innerText;
+                    openModal(`<h3>Patient Details</h3><p>Viewing details for <strong>${patientName}</strong></p>`);
+                }
+            });
+        });
+
+        // 7. زر Check
+        document.querySelectorAll('.check-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+                const card = btn.closest('.list-item');
+                if(card.style.opacity === '0.5') {
+                    card.style.opacity = '1';
+                    btn.style.filter = 'none';
+                } else {
+                    card.style.opacity = '0.5'; 
+                    btn.style.filter = 'grayscale(100%)';
+                }
+            });
+        });
+    </script>
+</body>
 </html>
